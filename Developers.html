@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 100px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            width: 100px;
+        }
+        h1 {
+            text-align: center;
+        }
+        tr {
+            text-align: center;
+        }
+        #new-developer-form, #update-developer-form, #delete-form {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 1px;
+            margin-bottom: 50px;
+        }
+        #new-developer-form h2, #update-developer-form h2, #delete-form h2 {
+            font-size: 18px;
+        }
+        .edit-button {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 1px;
+        }
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+        .delete-button {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 1px; 
+        }
+        .delete-button:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Developers</h1>
+    <table>
+        <thead>
+            <tr>
+                <th><a href="new-developer-form" id="developer-form">New</a></th> 
+                <th>ID</th>
+                <th>Developer</th>
+                <th>Country</th>
+                <th>Email</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#update-developer-form" class="edit-button" data-row="1">Edit</a></td>
+                <td>1</td>
+                <td>Cool Games</td>
+                <td>Canada</td>
+                <td>Cool@gmail.com</td>
+                <td><a href="delete-form" class="delete-button" onclick="confirmDelete(this)">Delete</a> </td>
+            </tr>
+            <tr>
+                <td><a href="#update-developer-form" class="edit-button" data-row="2">Edit</a></td>
+                <td>2</td>
+                <td>Nice Studios</td>
+                <td>Sweden</td>
+                <td>Nice@yahoo.com</td>
+                <td><a href="delete-form" class="delete-button" onclick="confirmDelete(this)">Delete</a> </td>
+            </tr>
+            <tr>
+                <td><a href="#update-developer-form" class="edit-button" data-row="3">Edit</a></td>
+                <td>3</td>
+                <td>Ok Company</td>
+                <td>United States</td>
+                <td>Okgames@gmail.com</td>
+                <td><a href="delete-form" class="delete-button" onlick="confirmDelete(this)">Delete</a> </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div id="new-developer-form">
+        <h2>Add New Developer</h2>
+        <form id="developer-form">
+            <label for="name">Developer Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="country">Country:</label>
+            <input type="text" id="developer" name="developer" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" name="eAddress" id="email" size="30" maxlength="100" placeholder="name@host.com" required><br><br>
+            <input type="submit" value="Add Game">
+            <input type="button" value="Cancel">
+        </form>
+    </div>
+
+    <div id="update-developer-form">
+        <h2>Update Developer</h2>
+        <form id="update-form">
+            <label for="name">Developer Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="country">Country:</label>
+            <input type="text" id="developer" name="developer" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" name="eAddress" id="email" size="30" maxlength="100" placeholder="name@host.com" required><br><br>
+            <input type="submit" value="Add Game">
+            <input type="button" value="Cancel"> 
+        </form>
+    </div>
+
+    <form id="delete-form">
+        <h2>Delete Developer</h2>
+        <p>Are you sure you want to delete this Developer?</p>
+            <button type="button" onclick="deleteRow()">Confirm</button>
+            <button type="button" onclick="cancelDelete()">Cancel</button>
+    </form>
+</body>
+</html>
