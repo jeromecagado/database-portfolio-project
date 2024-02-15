@@ -5,17 +5,17 @@
 -- Select Operations.
 
 -- Get table of developers.
-Select * FROM Developers;
+Select developer_name FROM Developers;
 
 -- Get table of sales.
-Select * FROM Sales;
+Select sale_revenue FROM Sales;
 
 -- Get table of videogames.
-SELECT * FROM VideoGames;
+SELECT video_game_name FROM VideoGames;
 
 -- Get all videogames made by a developer. 
 SELECT VideoGames.video_game_name AS title
-FROM Developers
+FROM VideoGames
 JOIN Developers ON Videogames.developer_id = developer.id
 WHERE Developers.name = 'Cool Games';
 
@@ -40,35 +40,26 @@ VALUES ('Developer ID', 'Videogame name', 'price', 'quantity')
 -- Upate Operations
 
 -- Update Developer data. 
-Update Developers SET developer_name = 'Updated Name', developer_country = 'Updated Country', developer_email = 'Updated email' WHERE id = 1;
-Update Developers SET developer_name = 'Updated Name', developer_country = 'Updated Country', developer_email = 'Updated email' WHERE id = 2;
-Update Developers SET developer_name = 'Updated Name', developer_country = 'Updated Country', developer_email = 'Updated email' WHERE id = 3;
+Update Developers SET developer_name = :developer_nameInput, developer_country = :developer_countryInput, developer_email = :developer_emailInput WHERE id = :developer_id_from_the_update_form;
 
 -- Update Sales data.
-Upate Sales SET employee_id = 'Updated employee', customer_id = 'Updated customer', sale_revenue = 'revenue', sold_date = 'dates sold' WHERE id = 1;
-Upate Sales SET employee_id = 'Updated employee', customer_id = 'Updated customer', sale_revenue = 'revenue', sold_date = 'dates sold' WHERE id = 2;
-Upate Sales SET employee_id = 'Updated employee', customer_id = 'Updated customer', sale_revenue = 'revenue', sold_date = 'dates sold' WHERE id = 3;
+Update Sales SET employee_id = :employee_nameInput, customer_id = :customer_nameInput, sale_revenue = :sale_revenueInput, sold_date = :sale_dateInput WHERE id = :sale_id_from_the_update_form;
 
 -- Update VideoGames data.
-Update VideoGames SET developer_id = "Updated developer", video_game_name = 'Updated title', price = 'price', quantity = 'quantity' WHERE id = 1;
-Update VideoGames SET developer_id = "Updated developer", video_game_name = 'Updated title', price = 'price', quantity = 'quantity' WHERE id = 2;
-Update VideoGames SET developer_id = "Updated developer", video_game_name = 'Updated title', price = 'price', quantity = 'quantity' WHERE id = 3;
+Update VideoGames SET developer_id = :developer_nameInput, video_game_name = :videogame_nameInput, price = :priceInput, quantity = :quantityInput WHERE :videogame_id_from_the_udate_form;
+
 
 
 -- Delete Operations
 
 -- Delete Developer data.
-DELETE FROM Developers WHERE id = 1;
-DELETE FROM Developers WHERE id = 2;
-DELETE FROM Developers WHERE id = 3;
+DELETE FROM Developers WHERE id = :developer_Id_selected_from_browse_developer_page
 
 -- Delete Sales data.
-DELETE FROM Sales WHERE id = 1;
-DELETE FROM Sales WHERE id = 2;
-DELETE FROM Sales WHERE id = 3;
+DELETE FROM Sales WHERE id = :sale_Id_selected_from_browse_developer_page
 
 -- Delete VideoGames data.
-DELETE FROM VideoGames WHERE id = 1;
-DELETE FROM VideoGames WHERE id = 2;
-DELETE FROM VideoGames WHERE id = 3;
+DELETE FROM VideoGames WHERE id = :videogame_Id_selected_from_browse_developer_page
+
+
 
