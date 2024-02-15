@@ -63,3 +63,109 @@ DELETE FROM VideoGames WHERE id = :videogame_Id_selected_from_browse_developer_p
 
 
 
+
+
+
+--- Statements for Customer
+
+
+--- Create 
+
+INSERT INTO Customers(customer_fname,,customer_lname,address,city,state,zipcode,email,customer_phone)
+VALUES (:fnameInput,:lnameInput,:addressInput,:cityInput,:stateInput,:zipcodeInput,:emailInput,:phoneInput);
+
+-- Read
+
+SELECT customer_id,customer_fname,,customer_lname,address,city,state,zipcode,email,customer_phone
+FROM Customers;
+
+--UPDATE
+
+
+-- to get the entry to update
+SELECT customer_id,customer_fname,,customer_lname,address,city,state,zipcode,email,customer_phone
+FROM Customers
+WHERE customer_id ==:id_selected_from_customer;
+
+UPDATE Customers
+SET customer_fname = :fnameInput, customer_lname =:lnameInput,address = :addressInput, city = :cityInput,
+state = :stateInput, zipcode = :zipcodeInput, email = :emailInput,customer_phone = :phoneInput
+WHERE customer_id ==:id_selected_from_customer;
+
+
+--DELETE
+
+DELETE FROM Customers WHERE id = ::id_selected_from_customer
+
+
+-- to get the entry to update
+
+
+--- Statements for Employee
+
+
+--- Create 
+
+INSERT INTO Employees(employee_fname, employee_lname,employee_phone,hire_date)
+VALUES (:fnameInput,:lnameInput,:phoneInput,:hireInput)
+-- Read
+
+SELECT employee_id,employee_fname, employee_lname,employee_phone,hire_date
+FROM employees
+
+--UPDATE
+
+-- to get the entry to update
+SELECT employee_fname, employee_lname,employee_phone,hire_date
+FROM Employees
+WHERE employee_id ==:id_selected_from_employee;
+
+UPDATE Employees
+SET employee_fname = :fnameInput, employee_lname = :lnameInput,employee_phone = :phoneInput, hire_date = :hireInput
+WHERE customer_id ==:id_selected_from_employee;
+
+
+--DELETE
+
+DELETE FROM Employees WHERE id = ::id_selected_from_employee
+
+
+-- Statements from Video Games Sales
+
+
+--- Create 
+
+INSERT INTO Employees(employee_fname, employee_lname,employee_phone,hire_date)
+VALUES (:fnameInput,:lnameInput,:phoneInput,:hireInput)
+-- Read
+
+SELECT video_games_sales_id,videogamesales.sale_id,Customers.customer_fname,Customers.customer_lname,VideoGames.video_game_name
+FROM VideoGameSales
+INNER JOIN Sales
+ON VideoGameSales.sale_id=Sales.sale_id
+INNER JOIN Customers
+ON  Sales.customer_id = Customers.customer_id
+INNER JOIN VideoGames 
+ON VideoGameSales.video_game_id = VideoGames.video_game_id
+
+--UPDATE
+
+-- to get the entry to update
+SELECT video_games_sales_id,videogamesales.sale_id,Customers.customer_fname,Customers.customer_lname,VideoGames.video_game_name
+FROM VideoGameSales
+INNER JOIN Sales
+ON VideoGameSales.sale_id=Sales.sale_id
+INNER JOIN Customers
+ON  Sales.customer_id = Customers.customer_id
+INNER JOIN VideoGames 
+ON VideoGameSales.video_game_id = VideoGames.video_game_id
+WHERE video_games_sales_id =: video_games_sales_id_selected;
+
+UPDATE VideoGameSales
+SET  video_game_id = (SELECT video_game_id FROM VideoGames WHERE video_game_name = :namePickedFromDropDown)
+WHERE video_games_sales_id ==:video_games_sales_id_selected;
+
+
+--DELETE
+
+DELETE FROM VideoGamesSales WHERE id = ::id_selected_from_video_game_sales
