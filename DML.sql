@@ -7,6 +7,9 @@
 -- Get table of developers.
 Select developer_name FROM Developers;
 
+-- Get all developer IDs and Names to populate the Homeworld dropdown. 
+SELECT developer_id, name FROM Developers;
+
 -- Get table of sales.
 Select sale_revenue FROM Sales;
 
@@ -18,7 +21,6 @@ SELECT VideoGames.video_game_name AS title
 FROM VideoGames
 JOIN Developers ON Videogames.developer_id = developer.id
 WHERE Developers.name = 'Cool Games';
-
 
 
 -- Insert Operations.
@@ -53,14 +55,17 @@ Update VideoGames SET developer_id = :developer_nameInput, video_game_name = :vi
 -- Delete Operations
 
 -- Delete Developer data.
-DELETE FROM Developers WHERE id = :developer_Id_selected_from_browse_developer_page
+DELETE FROM Developers WHERE id = :developer_Id_selected_from_browse_developer_page;
 
 -- Delete Sales data.
-DELETE FROM Sales WHERE id = :sale_Id_selected_from_browse_developer_page
+DELETE FROM Sales WHERE id = :sale_Id_selected_from_browse_developer_page;
 
 -- Delete VideoGames data.
-DELETE FROM VideoGames WHERE id = :videogame_Id_selected_from_browse_developer_page
+DELETE FROM VideoGames WHERE id = :videogame_Id_selected_from_browse_developer_page;
 
+
+-- associate a videogame with sales (M-to-M relationship addition)
+INSERT INTO VideoGameSales(video_game_id, sales_id) VALUES (:video_id_from_dropdown_input, :sales_id_from_dropdown_input);
 
 
 
@@ -169,3 +174,6 @@ WHERE video_games_sales_id ==:video_games_sales_id_selected;
 --DELETE
 
 DELETE FROM VideoGamesSales WHERE id = ::id_selected_from_video_game_sales
+
+-- dis-associate a video game from a sale (M-to-M relationship deletion)
+DELETE FROM video_game_sales WHERE sale_id =:video_game_ID_selected_from_sale_and_videogame_list AND video_game_id = :sale_ID_selected_from-sale_and_videogame_list
