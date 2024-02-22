@@ -177,4 +177,4 @@ WHERE video_games_sales_id ==:video_games_sales_id_selected;
 
 --DELETE
 
-DELETE FROM VideoGamesSales WHERE id = ::id_selected_from_video_game_sales
+DELETE FROM VideoGamesSales WHERE id = :id_selected_from_video_game_sales
