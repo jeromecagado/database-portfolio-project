@@ -48,7 +48,6 @@ WHERE sale_id = :id_selected_from_sales;
 
 DELETE FROM Sales WHERE id = :id_selected_from_sales;
 
--- Select Operations.
 
 
 
@@ -118,7 +117,7 @@ WHERE customer_id ==:id_selected_from_customer;
 DELETE FROM Customers WHERE id = ::id_selected_from_customer
 
 
--- to get the entry to update
+
 
 
 --- Statements for Employee
@@ -168,7 +167,7 @@ ON  Sales.customer_id = Customers.customer_id
 INNER JOIN VideoGames 
 ON VideoGameSales.video_game_id = VideoGames.video_game_id
 
---UPDATE
+-- Update
 
 -- to get the entry to update
 SELECT video_games_sales_id,videogamesales.sale_id,Customers.customer_fname,Customers.customer_lname,VideoGames.video_game_name
