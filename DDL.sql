@@ -49,7 +49,7 @@ PRIMARY KEY (developer_id)
 DROP TABLE IF EXISTS Sales;
 CREATE TABLE Sales(
 sale_id INT auto_increment NOT NULL UNIQUE,
-employee_id INT NOT NULL,
+employee_id INT ,
 customer_id INT NOT NULL,
 sale_revenue DECimal(10,2) NOT NULL,
 sold_date DATE,
@@ -80,8 +80,6 @@ CREATE TABLE VideoGameSales(
 video_games_sales_id INT auto_increment NOT NULL UNIQUE,
 sale_id INT NOT NULL,
 video_game_id  INT NOT NULL,
-list_price DECIMAL(10,2) NOT NULL,
-quantity_sold INT NOT NULL,
 PRIMARY KEY (video_games_sales_id),
 FOREIGN KEY (sale_id) REFERENCES Sales(sale_id) ON DELETE CASCADE,
 FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) 
@@ -130,7 +128,7 @@ VALUES(3, "Angry Fish", 5.00, 10),
 INSERT VideoGameSales(sale_id, video_game_id, list_price,quantity_sold)
 VALUES(1,1,5.00,10),
 (2,2,25.00,3),
-(3,3,50.00,2);
+(3,3);
 
 
 

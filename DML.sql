@@ -2,10 +2,33 @@
 -- We will be using the Retro Games datase. 
 
 
+
+-- Statements for Developer
+
+-- Create
+
+INSERT INTO Developers (developer_name, developer_country, developer_email)
+VALUES ('Developer Name', 'Developer Country', 'email');
+
+-- Read
+
+Select * FROM Developers;
+
+-- Update
+
+Update Developers 
+SET developer_name = :nameInput, developer_country = :countryInput, developer_email = emailInput
+WHERE id = :id_selected_from_developer;
+
+
+
+-- Delete
+
 -- Select Operations.
 
--- Get table of developers.
-Select * FROM Developers;
+
+
+
 
 -- Get table of sales.
 Select * FROM Sales;
@@ -23,9 +46,6 @@ WHERE Developers.name = 'Cool Games';
 
 -- Insert Operations.
 
--- Insert Developer data. 
-INSERT INTO Developers (developer_name, developer_country, developer_email)
-VALUES ('Developer Name', 'Developer Country', 'email');
 
 -- Insert Sales data.
 INSERT INTO Sales (employee_id, customer_id, sale_revenue, sold_date)
@@ -131,7 +151,7 @@ WHERE employee_id ==:id_selected_from_employee;
 
 UPDATE Employees
 SET employee_fname = :fnameInput, employee_lname = :lnameInput,employee_phone = :phoneInput, hire_date = :hireInput
-WHERE customer_id ==:id_selected_from_employee;
+WHERE employee_id ==:id_selected_from_employee;
 
 
 --DELETE
@@ -144,8 +164,8 @@ DELETE FROM Employees WHERE id = ::id_selected_from_employee
 
 --- Create 
 
-INSERT INTO Employees(employee_fname, employee_lname,employee_phone,hire_date)
-VALUES (:fnameInput,:lnameInput,:phoneInput,:hireInput)
+INSERT INTO VideoGameSales(sale_id,video_game_id)
+VALUES (:saleIdInput,:videoGameIdInput)
 -- Read
 
 SELECT video_games_sales_id,videogamesales.sale_id,Customers.customer_fname,Customers.customer_lname,VideoGames.video_game_name
