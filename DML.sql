@@ -140,7 +140,7 @@ DELETE FROM Employees WHERE id = ::id_selected_from_employee
 
 --- Create 
 
-INSERT INTO Employees(employee_fname, employee_lname,employee_phone,hire_date)
+INSERT INTO (employee_fname, employee_lname,employee_phone,hire_date)
 VALUES (:fnameInput,:lnameInput,:phoneInput,:hireInput)
 -- Read
 
