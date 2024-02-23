@@ -138,11 +138,6 @@
         <h2>Add New Game</h2>
         <form id="game-form">
             <label for="name">Name:</label>
-            <select id="name" name="name">
-                <option value="Angry Fish">Angry Fish</option>
-                <option value="BattleShip">BattleShip</option>
-                <option value="Battle Toad">Battle Toad</option>
-            </select>
             <input type="text" id="name" name="name" required><br><br>
             <label for="developer">Developer:</label>
             <input type="text" id="developer" name="developer" required><br><br>
@@ -159,7 +154,11 @@
         <h2>Update Game</h2>
         <form id="update-form">
             <label for="update-name">Name:</label>
-            <input type="text" id="update-name" name="name" required><br><br>
+            <select id ="name" name="name">
+                <option value="Angry Fish">Angry Fish</option>
+                <option value="BattleShip">BattleShip</option>
+                <option value="Battle Toad">Battle Toad</option> 
+            </select><br><br>
             <label for="update-developer">Developer:</label>
             <input type="text" id="update-developer" name="developer" required><br><br>
             <label for="update-price">Price:</label>
