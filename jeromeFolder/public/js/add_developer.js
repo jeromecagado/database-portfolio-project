@@ -73,18 +73,32 @@ addRowToTable = (data) => {
     let developer_countryCell = document.createElement("TD");
     let developer_emailCell = document.createElement("TD");
 
+    let deleteCell = document.createElement("TD");
+
     // Fill the cells with correct data
     developer_idCell.innerText = newRow.developer_id;
     developer_nameCell.innerText = newRow.developer_name;
     developer_countryCell.innerText = newRow.developer_country;
     developer_emailCell.innerText = newRow.developer_email;
 
+
+    deleteCell = document.createElement("button");
+    deleteCell.innerHTML = "Delete";
+    deleteCell.onclick = function(){
+        deletePerson(newRow.developer_id);
+    };
+
+
     // Add the cells to the row 
     row.appendChild(developer_idCell);
     row.appendChild(developer_nameCell);
     row.appendChild(developer_countryCell);
     row.appendChild(developer_emailCell);
-    
+    row.appendChild(deleteCell);
+
+    row.setAttribute('data-value', newRow.developer_id);
+
+        
     // Add the row to the table
     currentTable.appendChild(row);
 }
