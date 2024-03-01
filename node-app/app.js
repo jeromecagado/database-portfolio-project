@@ -15,7 +15,7 @@ app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the han
 app.set('view engine', '.hbs'); 
 
 // Database
-var db = require('./database/db-connector')
+var db = require('../jeromeFolder/database/db-connector')
 
 
 /*
