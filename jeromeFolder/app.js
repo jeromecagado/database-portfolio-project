@@ -48,7 +48,7 @@ app.get('/developers', function(req, res)
     let query1 = "SELECT * FROM Developers;";
 
     db.pool.query(query1, function(error, rows, fields){
-        
+    
         res.render('developers', {data: rows});
     })
 });
@@ -139,7 +139,29 @@ app.delete('/delete-developer-ajax', function(req,res,next){
   
   })});
 
-
+  app.put('/put-developer-ajax', function(req,res,next){
+    let data = req.body;
+    let developer_country = data.developer_country;
+    let developer_email = data.developer_email;
+  
+    let queryUpdateDeveloper = `UPDATE Developers SET developer_name = ?, developer_country = ?, developer_email = ? WHERE developer_id = ?`;
+  
+          // Run the 1st query
+          db.pool.query(queryUpdateDeveloper, [developer_country, developer_email], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              }
+  
+              // If there was no error, we run our second query and return that data so we can use it to update the people's
+              // table on the front-end
+              else
+              {
+                res.send(rows);
+              }
+  })});
 
 
 
