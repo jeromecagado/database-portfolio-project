@@ -1,3 +1,9 @@
+/* # Citation for the following function: app.js
+   # Date: 02/29/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+
+
 // App.js
 
 /*
