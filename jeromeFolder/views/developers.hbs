@@ -77,5 +77,25 @@
     <input type="submit">
 </form>
 
+<h2>Update a Developer</h2>
+<form id="update-developer-form-ajax">
+    <label for="input-developer_name">Developer Name: </label>
+    <select name="input-developer_name" id="input-developer_name">
+        <option value="test">Select a Developer</option>
+        {{#each data}}
+        <option value="{{this.developer_id}}">{{this.developer_name}}</option>
+        {{/each}}
+    </select>
+    <label for="input-developer_country">Country: </label>
+    <input type="text" name="input-developer_country" id="input-developer_country">
+
+    <label for="input-developer_email">Email: </label>
+    <input type="text" name="input-developer_email" id="input-developer_email">
+    <input type="submit">
+</form>
+
+<script src="./js/update_developer.js"></script>
+
+
 {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
 <script src="./js/add_developer.js"></script>
