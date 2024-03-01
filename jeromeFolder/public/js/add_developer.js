@@ -85,7 +85,7 @@ addRowToTable = (data) => {
     deleteCell = document.createElement("button");
     deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function(){
-        deletePerson(newRow.developer_id);
+        deleteDeveloper(newRow.developer_id);
     };
 
 
@@ -101,4 +101,10 @@ addRowToTable = (data) => {
         
     // Add the row to the table
     currentTable.appendChild(row);
+
+    let selectMenu = document.getElementById("mySelect");
+    let option = document.createElement(option);
+    option.text = newRow.developer_name + newRow.developer_country + newRow.developer_email; 
+    option.value = newRow.developer_id;
+    selectMenu.add(option);
 }

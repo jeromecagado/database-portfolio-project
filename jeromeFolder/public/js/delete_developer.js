@@ -34,10 +34,22 @@ function deleteRow(developer_id){
        //rows would be accessed using the "row" variable assigned in the for loop
        if (table.rows[i].getAttribute("data-value") == developer_id) {
             table.deleteRow(i);
+            deleteDropDownMenu(developer_id);
             break;
        }
     }
 }
+
+function deleteDropDownMenu(developer_id){
+    let selectMenu = document.getElementById("input-developer_name");
+    for (let i = 0; i < selectMenu.length; i++){
+      if (Number(selectMenu.options[i].value) === Number(developer_id)){
+        selectMenu[i].remove();
+        break;
+      } 
+  
+    }
+  }
 
 // Creates a single row from an Object representing a single record from
 // bsg_people
