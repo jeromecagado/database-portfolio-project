@@ -39,3 +39,18 @@
             <th>delete</th>
         </tr>
     </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.developer_id}}>
+            <td>{{this.developer_id}}</td>
+            <td>{{this.developer_name}}</td>
+            <td>{{this.developer_country}}</td>
+            <td>{{this.developer_email}}</td>
+            <td><button onclick="deleteDeveloper({{this.developer_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
