@@ -53,9 +53,17 @@ app.get('/developers', function(req, res)
     })
 });
 
+
+
 app.get('/customers', function(req, res)
 {
-    res.render('customers');
+
+    let query1 = "SELECT * FROM Customers;"
+
+    db.pool.query(query1, function(error, rows, fields){
+    
+        res.render('customers', {data: rows});
+    })
 });
 
 app.get('/sales', function(req, res)
