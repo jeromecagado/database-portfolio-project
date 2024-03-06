@@ -80,6 +80,9 @@ app.get('/sales', function(req, res)
 
 app.get('/videogames', function(req, res)
 {
+
+    let query1 = "SELECT "
+
     res.render('videogames');
 });
 

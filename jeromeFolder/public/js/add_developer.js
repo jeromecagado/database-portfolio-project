@@ -82,10 +82,10 @@ addRowToTable = (data) => {
     developer_emailCell.innerText = newRow.developer_email;
 
 
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell = document.createElement("TD");
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
-        deletePerson(newRow.developer_id);
+        deleteDeveloper(newRow.developer_id);
     };
 
 
