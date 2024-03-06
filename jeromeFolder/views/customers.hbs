@@ -1,4 +1,4 @@
-<table id="customer-table">
+<table id="customers-table">
      <style>
             body {
                 display: flex;
@@ -44,12 +44,17 @@
 
         {{!-- For each row, print the id, name, country, and email in order --}}
         {{#each data}}
-        <tr data-value={{this.developer_id}}>
-            <td>{{this.developer_id}}</td>
-            <td>{{this.developer_name}}</td>
-            <td>{{this.developer_country}}</td>
-            <td>{{this.developer_email}}</td>
-            <td><button onclick="deleteDeveloper({{this.developer_id}})">Delete</button></td>
+        <tr data-value={{this.customer_id}}>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.customer_fname}}</td>
+            <td>{{this.customer_lname}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.zipcode}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.customer_phone}}</td>
+            <td><button onclick="deleteCustomer({{this.customer_id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>

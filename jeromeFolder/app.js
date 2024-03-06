@@ -68,6 +68,13 @@ app.get('/customers', function(req, res)
 
 app.get('/sales', function(req, res)
 {
+    let query1 = "SELECT * FROM Sales"
+
+    db.pool.query(query1, function(error,rows,fields){
+        
+        res.render('customer', {data: rows})
+    })
+
     res.render('sales');
 });
 
@@ -149,7 +156,7 @@ app.delete('/delete-developer-ajax', function(req,res,next){
 
   app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = data.developer_name
+    let developer_id = data.developer_name;
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
