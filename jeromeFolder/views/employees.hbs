@@ -56,3 +56,27 @@
         {{/each}}
     </tbody>
 </table>
+
+
+<h2>Update an Employee</h2>
+<form id="update--form-ajax">
+    <label for="input-employee_id">Developer Name: </label>
+    <select name="input-employee_id-update" id="input-employee_id-update">
+        <option value="test">Select a Customer</option>
+        {{#each data}}
+        <option value="{{this.employee_id}}">{{this.employee_fname}} {{this.employee_lname}}</option>
+        {{/each}}
+    </select>
+   
+
+    <label for="input-employee_phone-update">Employee Phone Number: </label>
+    <input type="text" name="input-employee_phone-update" id="input-employee_phone-update">
+
+    <label for="input-hire_date-update">Hire Date: </label>
+    <input type="text" name="input-employee_phone-update" id="input-employee_phone-update">
+    
+
+    <input type="submit">
+</form>
+
+<script src="./js/update_employee.js"></script>
