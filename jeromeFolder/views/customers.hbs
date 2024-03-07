@@ -66,9 +66,9 @@
 
 
 <h2>Update a Customer</h2>
-<form id="update-developer-form-ajax">
-    <label for="input-developer_name">Developer Name: </label>
-    <select name="input-developer_name-update" id="input-developer_name-update">
+<form id="update-customer-form-ajax">
+    <label for="input-customer_id">Developer Name: </label>
+    <select name="input-customer_id-update" id="input-customer_id-update">
         <option value="test">Select a Developer</option>
         {{#each data}}
         <option value="{{this.customer_id}}">{{this.customer_fname}} {{this.customer_lname}}</option>
@@ -79,5 +79,19 @@
 
     <label for="input-customer_city-update">City: </label>
     <input type="text" name="input-customer_city-update" id="input-customer_city-update">
+
+    <label for="input-customer_state-update">State: </label>
+    <input type="text" name="input-customer_state-update" id="input-customer_state-update">
+    
+    <label for="input-customer_zipcode-update">Zip Code: </label>
+    <input type="number" name="input-customer_zipcode-update" id="input-customer_zipcode-update">
+
+    <label for="input-customer_email-update">Email: </label>
+    <input type="text" name="input-customer_email-update" id="input-customer_email-update">
+
+    <label for="input-customer_phone-update">Customer Phone Number: </label>
+    <input type="text" name="input-customer_phone-update" id="input-customer_phone-update">
+    
+
     <input type="submit">
 </form>
