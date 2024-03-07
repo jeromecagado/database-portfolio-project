@@ -184,6 +184,38 @@ app.delete('/delete-developer-ajax', function(req,res,next){
 
 
 
+  app.put('/put-customer-ajax', function(req,res,next){
+    let data = req.body;
+    let customer_id = data.customer_id;
+    let customer_address = data.customer_address;
+    let customer_city = data.customer_city;
+    let customer_state = data.customer_state;
+    let customer_zipcode = data.customer_zipcode;
+    let customer_email = data.customer_email;
+    let customer_phone = data.customer_phone;
+
+  
+    let queryUpdateCustomer = `UPDATE Customers SET  address = ?, city = ?, state = ?, zipcode = ?, email = ?, customer_phone = ?   WHERE customer_id = ?`;
+  
+          // Run the 1st query
+          db.pool.query(queryUpdateCustomer, [customer_address, customer_city, customer_state,customer_zipcode,customer_email,customer_phone,customer_id], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              }
+  
+              // If there was no error, we run our second query and return that data so we can use it to update the people's
+              // table on the front-end
+              else
+              {
+                res.send(rows);
+              }
+  })});
+
+
+
 /*
     LISTENER
 */

@@ -1,18 +1,18 @@
 
 // Get the objects we need to modify
-let updateDeveloperForm = document.getElementById('update-customer-form-ajax');
+let updateCustomerForm = document.getElementById('update-customer-form-ajax');
 
 // Modify the objects we need
-updateDeveloperForm.addEventListener("submit", function (e) {
+updateCustomerForm.addEventListener("submit", function (e) {
    
     // Prevent the form from submitting
     e.preventDefault();
 
     // Get form fields we need to get data from
     let inputCustomerId = document.getElementById("input-customer_id-update");
-    let inputCustomerAddress = doc
-    let inputCustomerCity = document.getElementById("input-developer_city-update");
-    let inputCustomerState = document.getElementById("input-developer_state-update");
+    let inputCustomerAddress = document.getElementById("input-customer_address-update")
+    let inputCustomerCity = document.getElementById("input-customer_city-update");
+    let inputCustomerState = document.getElementById("input-customer_state-update");
     let inputCustomerZipcode = document.getElementById("input-customer_zipcode-update");
     let inputCustomerEmail = document.getElementById("input-customer_email-update");
     let inputCustomerPhone = document.getElementById("input-customer_phone-update");
@@ -21,6 +21,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 
     // Get the values from the form fields
     let customer_idValue = inputCustomerId.value;
+    let customer_addressValue = inputCustomerAddress.value;
     let customer_cityValue = inputCustomerCity.value;
     let customer_stateValue = inputCustomerState.value;
     let customer_zipcodeValue = inputCustomerZipcode.value;
@@ -32,11 +33,12 @@ updateDeveloperForm.addEventListener("submit", function (e) {
     // Put our data we want to send in a javascript object
     let data = {
         customer_id: customer_idValue,
+        customer_address:customer_addressValue,
         customer_city: customer_cityValue,
         customer_state: customer_stateValue,
         customer_zipcode: customer_zipcodeValue,
-        customer_email: customer_emailValue.value,
-        customer_phone: customer_phoneValue.value
+        customer_email: customer_emailValue,
+        customer_phone: customer_phoneValue
     }
     
     // Setup our AJAX request
@@ -66,7 +68,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 function updateRow(data, customer_id){
     let parsedData = JSON.parse(data);
     
-    let table = document.getElementById("developer-table");
+    let table = document.getElementById("customer-table");
 
     for (let i = 0, row; row = table.rows[i]; i++) {
        //iterate through rows
@@ -86,8 +88,13 @@ function updateRow(data, customer_id){
 
             // Reassing name, country and email values.
             tdAddress.innerHTML = parsedData[0].customer_address;
-            tdCity.innerHTML = parsedData[0].developer_country;
-            tdEmail.innerHTML = parsedData[0].developer_email;
+            tdCity.innerHTML = parsedData[0].customer_city;
+            tdState.innerHTML = parsedData[0].customer_state;
+            tdZipcode.innerHTML = parsedData[0].customer_zipcode;
+            tdEmail.innerHTML = parsedData[0].customer_email;
+            tdPhone.innerHTML = parsedData[0].customer_phone;
+
+            
 
        }
     }

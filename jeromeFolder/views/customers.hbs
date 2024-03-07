@@ -1,4 +1,4 @@
-<table id="customers-table">
+<table id="customer-table">
      <style>
             body {
                 display: flex;
@@ -69,13 +69,13 @@
 <form id="update-customer-form-ajax">
     <label for="input-customer_id">Developer Name: </label>
     <select name="input-customer_id-update" id="input-customer_id-update">
-        <option value="test">Select a Developer</option>
+        <option value="test">Select a Customer</option>
         {{#each data}}
         <option value="{{this.customer_id}}">{{this.customer_fname}} {{this.customer_lname}}</option>
         {{/each}}
     </select>
     <label for="input-customer_address">Address: </label>
-    <input type="text" name="input-customer_address-update" id="input-developer_country-update">
+    <input type="text" name="input-customer_address-update" id="input-customer_address-update">
 
     <label for="input-customer_city-update">City: </label>
     <input type="text" name="input-customer_city-update" id="input-customer_city-update">
@@ -95,3 +95,7 @@
 
     <input type="submit">
 </form>
+
+<script src="./js/update_customer.js"></script>
+
+<!-- <script src="./js/add_customer.js"></script> -->
