@@ -59,3 +59,25 @@
         {{/each}}
     </tbody>
 </table>
+
+
+
+
+
+
+<h2>Update a Customer</h2>
+<form id="update-developer-form-ajax">
+    <label for="input-developer_name">Developer Name: </label>
+    <select name="input-developer_name-update" id="input-developer_name-update">
+        <option value="test">Select a Developer</option>
+        {{#each data}}
+        <option value="{{this.customer_id}}">{{this.customer_fname}} {{this.customer_lname}}</option>
+        {{/each}}
+    </select>
+    <label for="input-customer_address">Address: </label>
+    <input type="text" name="input-customer_address-update" id="input-developer_country-update">
+
+    <label for="input-customer_city-update">City: </label>
+    <input type="text" name="input-customer_city-update" id="input-customer_city-update">
+    <input type="submit">
+</form>
