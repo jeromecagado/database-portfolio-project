@@ -50,10 +50,49 @@
             <td>{{this.video_game_name}}</td>
             <td>{{this.price}}</td>
             <td>{{this.quantity}}</td>
-            
-            
-            <td><button onclick="deleteSale({{this.sale_id}})">Delete</button></td>
+            <td><button onclick="deleteVideogame({{this.video_game_id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+<script src="./js/delete_videogame.js"></script>
+<!-- /views/index.hbs -->
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a Videogame</h2>
+<p>To add a new videogame, please enter their information below and click 'Submit'!</p>
+<form id="add-videogame-form-ajax">
+    <label for="input-developer_name">Developer Name: </label>
+    <input type="text" name="input-developer_name" id="input-developer_name">
+    
+    <label for="input-developer_country">Country: </label>
+    <input type="text" name="input-developer_country" id="input-developer_country">
+
+    <label for="input-developer_email">Email: </label>
+    <input type="text" name="input-developer_email" id="input-developer_email">
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_developer.js"></script>
+
+
+<h2>Update a Developer</h2>
+<form id="update-developer-form-ajax">
+    <label for="input-developer_name">Developer Name: </label>
+    <select name="input-developer_name-update" id="input-developer_name-update">
+        <option value="test">Select a Developer</option>
+        {{#each data}}
+        <option value="{{this.developer_id}}">{{this.developer_name}}</option>
+        {{/each}}
+    </select>
+    <label for="input-developer_country">Country: </label>
+    <input type="text" name="input-developer_country-update" id="input-developer_country-update">
+
+    <label for="input-developer_email">Email: </label>
+    <input type="text" name="input-developer_email-update" id="input-developer_email-update">
+    <input type="submit">
+</form>
+
+<script src="./js/update_developer.js"></script>
