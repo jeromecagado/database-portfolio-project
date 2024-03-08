@@ -1,4 +1,4 @@
-<table id="employees-table">
+<table id="employee-table">
      <style>
             body {
                 display: flex;
@@ -56,3 +56,30 @@
         {{/each}}
     </tbody>
 </table>
+
+
+<h2>Add an Employee</h2>
+<p>To add a new Employee, please enter their information below and click 'Submit'!</p>
+<form id="add-employee-form-ajax">
+    <label for="input-employee_fname">First Name: </label>
+    <input type="text" name="input-employee_fname" id="input-employee_fname">
+    
+    <label for="input-employee_lname">Last Name </label>
+    <input type="text" name="input-employee_lname" id="input-employee_lname">
+
+    <label for="input-employee_phone">Phone: </label>
+    <input type="text" name="input-employee_phone" id="input-employee_phone">
+    
+    <label for="input-employee_hiredate">Hire Date </label>
+    <input type="date" name="input-employee_hiredate" id="input-employee_hiredate">
+
+    <input type="submit">
+</form>
+
+
+
+
+
+
+
+<script src="./js/add_employee.js"></script>
