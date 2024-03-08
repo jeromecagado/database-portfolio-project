@@ -1,4 +1,4 @@
-<table id="employees-table">
+<table id="employee-table">
      <style>
             body {
                 display: flex;
@@ -60,15 +60,18 @@
 
 <h2>Add an Employee</h2>
 <p>To add a new Employee, please enter their information below and click 'Submit'!</p>
-<form id="add-developer-form-ajax">
-    <label for="input-employee_fname">Developer Name: </label>
-    <input type="text" name="input-employee_fname" id="input-emploe_name">
+<form id="add-employee-form-ajax">
+    <label for="input-employee_fname">First Name: </label>
+    <input type="text" name="input-employee_fname" id="input-employee_fname">
     
-    <label for="input-developer_country">Country: </label>
-    <input type="text" name="input-developer_country" id="input-developer_country">
+    <label for="input-employee_lname">Last Name </label>
+    <input type="text" name="input-employee_lname" id="input-employee_lname">
 
-    <label for="input-developer_email">Email: </label>
-    <input type="text" name="input-developer_email" id="input-developer_email">
+    <label for="input-employee_phone">Phone: </label>
+    <input type="text" name="input-employee_phone" id="input-employee_phone">
+    
+    <label for="input-employee_hiredate">Hire Date </label>
+    <input type="date" name="input-employee_hiredate" id="input-employee_hiredate">
 
     <input type="submit">
 </form>
@@ -76,25 +79,7 @@
 
 
 
-<h2>Update an Employee</h2>
-<form id="update--form-ajax">
-    <label for="input-employee_id">Developer Name: </label>
-    <select name="input-employee_id-update" id="input-employee_id-update">
-        <option value="test">Select a Customer</option>
-        {{#each data}}
-        <option value="{{this.employee_id}}">{{this.employee_fname}} {{this.employee_lname}}</option>
-        {{/each}}
-    </select>
-   
 
-    <label for="input-employee_phone-update">Employee Phone Number: </label>
-    <input type="text" name="input-employee_phone-update" id="input-employee_phone-update">
 
-    <label for="input-hire_date-update">Hire Date: </label>
-    <input type="text" name="input-employee_phone-update" id="input-employee_phone-update">
-    
 
-    <input type="submit">
-</form>
-
-<script src="./js/update_employee.js"></script>
+<script src="./js/add_employee.js"></script>
