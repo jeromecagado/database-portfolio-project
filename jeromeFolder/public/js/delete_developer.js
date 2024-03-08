@@ -1,3 +1,12 @@
+/* # Citation for the following function: delete_developer.js
+   # Date: 02/29/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+*/
+
+
+
+
 function deleteDeveloper(developer_id) {
     // Put our data we want to send in a javascript object
     let data = {
@@ -34,10 +43,22 @@ function deleteRow(developer_id){
        //rows would be accessed using the "row" variable assigned in the for loop
        if (table.rows[i].getAttribute("data-value") == developer_id) {
             table.deleteRow(i);
+            deleteDropDownMenu(developer_id);
             break;
        }
     }
 }
+
+function deleteDropDownMenu(developer_id){
+    let selectMenu = document.getElementById("input-developer_name-update");
+    for (let i = 0; i < selectMenu.length; i++){
+      if (Number(selectMenu.options[i].value) === Number(developer_id)){
+        selectMenu[i].remove();
+        break;
+      } 
+  
+    }
+  }
 
 // Creates a single row from an Object representing a single record from
 // bsg_people
