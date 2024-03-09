@@ -27,7 +27,7 @@ addDeveloperForm.addEventListener("submit", function (e) {
     let data = {
         developer_name: developerNameValue,
         developer_country: developerCountryValue,
-        developer_email: developerEmailValue,
+        developer_email: developerEmailValue
     }
     
     // Setup our AJAX request
