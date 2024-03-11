@@ -7,15 +7,15 @@
 
 
 
-function deleteEmployee(employee_id) {
+function deleteSale(sale_id) {
     // Put our data we want to send in a javascript object
     let data = {
-        employee_id: employee_id
+        sale_id: sale_id
     };
 
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "/delete-employee-ajax", true);
+    xhttp.open("DELETE", "/delete-sale-ajax", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     // Tell our AJAX request how to resolve
@@ -23,7 +23,7 @@ function deleteEmployee(employee_id) {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
 
             // Delete the data to the table
-            deleteRow(employee_id);
+            deleteRow(sale_id);
 
         }
         else if (xhttp.readyState == 4 && xhttp.status != 204) {
@@ -37,11 +37,11 @@ function deleteEmployee(employee_id) {
 
 function deleteRow(employee_id){
 
-    let table = document.getElementById("employee-table");
+    let table = document.getElementById("sale-table");
     for (let i = 0, row; row = table.rows[i]; i++) {
        //iterate through rows
        //rows would be accessed using the "row" variable assigned in the for loop
-       if (table.rows[i].getAttribute("data-value") == employee_id) {
+       if (table.rows[i].getAttribute("data-value") == sale_id) {
             table.deleteRow(i);
             break;
        }
@@ -67,38 +67,35 @@ addRowToTable = (data) => {
 
     // Create a row and 4 cells
     let row = document.createElement("TR");
-    let employee_idCell = document.createElement("TD");
-    let employee_fnameCell = document.createElement("TD");
-    let employee_lnameCell = document.createElement("TD");
-    let employee_phoneCell = document.createElement("TD");
-    let hire_dateCell = document.createElement("TD");
+    let sale_idCell = document.createElement("TD");
+    let customer_idCell = document.createElement("TD");
+    let sale_revenueCell = document.createElement("TD");
+    let sold_dateCell = document.createElement("TD");
 
     let deleteCell = document.createElement("TD");
 
     // Fill the cells with correct data
-    employee_idCell.innerText = newRow.employee_id;
-    employee_fnameCell.innerText = newRow.employee_fname;
-    employee_lnameCell.innerText = newRow.employee_lname;
-    employee_phoneCell.innerText = newRow.employee_phone;
-    hire_dateCell.innerText = newRow.hire_date;
+    sale_idCell.innerText = newRow.sale_id;
+    customer_idCell.innerText = newRow.customer_id;
+    sale_revenueCell.innerText = newRow.sale_revenue;
+    sold_dateCell.innerText = newRow.sold_dateCell;
 
     deleteCell = document.createElement("button");
     deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function(){
-        deleteEmployee(newRow.employee_id);
+        deleteEmployee(newRow.sale_id);
     };
 
 
     // Add the cells to the row
-    row.appendChild(employee_idCell);
-    row.appendChild(employee_fnameCell);
-    row.appendChild(employee_lnameCell);
-    row.appendChild(employee_phoneCell);
-    row.appendChild(hire_dateCell);
+    row.appendChild(sale_idCell);
+    row.appendChild(customer_idCell);
+    row.appendChild(sale_revenueCell);
+    row.appendChild(sold_dateCell);
     row.appendChild(deleteCell);
 
     // Add a row attribute so the deleteRow function can find a newly added row
-    row.setAttribute('data-value', newRow.employee_id);
+    row.setAttribute('data-value', newRow.sale_id);
 
     // Add the row to the table
     currentTable.appendChild(row);
