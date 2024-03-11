@@ -43,22 +43,10 @@ function deleteRow(video_game_id){
        //rows would be accessed using the "row" variable assigned in the for loop
        if (table.rows[i].getAttribute("data-value") == video_game_id) {
             table.deleteRow(i);
-            deleteDropDownMenu(video_game_id);
             break;
        }
     }
 }
-
-function deleteDropDownMenu(video_game_id){
-    let selectMenu = document.getElementById("input-videogame_name-update");
-    for (let i = 0; i < selectMenu.length; i++){
-      if (Number(selectMenu.options[i].value) === Number(video_game_id)){
-        selectMenu[i].remove();
-        break;
-      } 
-  
-    }
-  }
 
 // Creates a single row from an Object representing a single record from
 // bsg_people
