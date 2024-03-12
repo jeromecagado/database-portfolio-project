@@ -1,9 +1,3 @@
-/* # Citation for the following function: update_developer.js
-   # Date: 02/29/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
-   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
-*/
-
 
 // Get the objects we need to modify
 let updateDeveloperForm = document.getElementById('update-developer-form-ajax');
@@ -24,8 +18,6 @@ updateDeveloperForm.addEventListener("submit", function (e) {
     let developer_nameValue = inputDeveloperName.value;
     let developer_countryValue = inputDeveloperCountry.value;
     let developer_emailValue = inputDeveloperEmail.value;
-
-
     
     // Put our data we want to send in a javascript object
     let data = {
@@ -33,7 +25,6 @@ updateDeveloperForm.addEventListener("submit", function (e) {
         developer_country: developer_countryValue,
         developer_email: developer_emailValue,
     }
-    console.log("Data to be sent:", data);
     
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
@@ -44,9 +35,8 @@ updateDeveloperForm.addEventListener("submit", function (e) {
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
-         //   console.log("Response received:", xhttp.response);
             // Add the new data to the table
-            updateRow(xhttp.response, data.developer_id);
+            updateRow(xhttp.response, data.developer_name);
 
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
@@ -62,8 +52,6 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 
 function updateRow(data, developer_id){
     let parsedData = JSON.parse(data);
-
-  //  console.log("Data to be parsed:", parsedData);
     
     let table = document.getElementById("developer-table");
 
@@ -76,9 +64,9 @@ function updateRow(data, developer_id){
             let updateRowIndex = table.getElementsByTagName("tr")[i];
 
             // Get td of country and email values.
-            let tdName = updateRowIndex.getElementsByTagName("td")[0];
-            let tdCountry = updateRowIndex.getElementsByTagName("td")[1];
-            let tdEmail = updateRowIndex.getElementsByTagName("td")[2];
+            let tdName = updateRowIndex.getElementsByTagName("td")[1];
+            let tdCountry = updateRowIndex.getElementsByTagName("td")[2];
+            let tdEmail = updateRowIndex.getElementsByTagName("td")[3];
 
             // Reassing name, country and email values.
             tdName.innerHTML = parsedData[0].developer_name;
