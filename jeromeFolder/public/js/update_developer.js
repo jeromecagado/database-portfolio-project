@@ -50,7 +50,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 })
 
 
-function updateRow(data, developer_id){
+function updateRow(data, developer_name){
     let parsedData = JSON.parse(data);
     
     let table = document.getElementById("developer-table");
@@ -58,7 +58,7 @@ function updateRow(data, developer_id){
     for (let i = 0, row; row = table.rows[i]; i++) {
        //iterate through rows
        //rows would be accessed using the "row" variable assigned in the for loop
-       if (table.rows[i].getAttribute("data-value") == developer_id) {
+       if (table.rows[i].getAttribute("data-value") == developer_name) {
 
             // Get the location of the row where we found the matching developer ID
             let updateRowIndex = table.getElementsByTagName("tr")[i];
