@@ -46,7 +46,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 
          //   console.log("Response received:", xhttp.response);
             // Add the new data to the table
-            updateRow(xhttp.response, data.developer_id);
+            updateRow(xhttp.response, data.developer_name);
 
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
