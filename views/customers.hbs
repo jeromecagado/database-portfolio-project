@@ -1,0 +1,106 @@
+{{! -- # Citation for the following function: customer.hbs
+   # Date: 03/06/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+}}
+{{!-- Create a table --}}
+
+
+<table id="customer-table">
+     <style>
+            body {
+                display: flex;
+                flex-direction: column;  
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+                width: 100px;
+            }
+            h1 {
+                text-align: center;
+            }
+            tr {
+                text-align: center;
+            }
+        </style>
+    {{!-- Header section --}}
+    <thead>
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.customer_id}}>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.customer_fname}}</td>
+            <td>{{this.customer_lname}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.zipcode}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.customer_phone}}</td>
+            <td><button onclick="deleteCustomer({{this.customer_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_customer.js"></script>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a Customer</h2>
+<p>To add a new customer, please enter their information below and click 'Submit'!</p>
+<form id="add-customer-form-ajax">
+    <label for="input-customer_fname"> First Name: </label>
+    <input type="text" name="input-customer_fname" id="input-customer_fname">
+    
+     <label for="input-customer_lname"> Last Name: </label>
+    <input type="text" name="input-customer_lname" id="input-customer_lname">
+
+    <label for="input-address">Address: </label>
+    <input type="text" name="input-address" id="input-address">
+
+    <label for="input-city">City: </label>
+    <input type="text" name="input-city" id="input-city">
+
+    <label for="input-state"> State: </label>
+    <input type="text" name="input-state" id="input-state">
+
+    <label for="input-zipcode"> Zipcode: </label>
+    <input type="text" name="input-zipcode" id="input-zipcode">
+
+     <label for="input-email"> Email: </label>
+    <input type="text" name="input-email" id="input-email">
+
+    <label for="input-customer_phone"> Customer Phone: </label>
+    <input type="text" name="input-customer_phone" id="input-customer_phone">
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_customer.js"></script>
+
+

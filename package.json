@@ -5,5 +5,22 @@
     "express-handlebars": "^7.1.2",
     "forever": "^4.0.3",
     "mysql": "^2.18.1"
-  }
+  },
+  "name": "ls",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromecagado/database-portfolio-project.git"
+  },
+  "author": "Jerome Cagado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeromecagado/database-portfolio-project/issues"
+  },
+  "homepage": "https://github.com/jeromecagado/database-portfolio-project#readme",
+  "description": ""
 }

@@ -1,0 +1,79 @@
+<table id="employee-table">
+     <style>
+            body {
+                display: flex;
+                flex-direction: column;  
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+                width: 100px;
+            }
+            h1 {
+                text-align: center;
+            }
+            tr {
+                text-align: center;
+            }
+        </style>
+    {{!-- Header section --}}
+    <thead>
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.employee_id}}>
+            <td>{{this.employee_id}}</td>
+            <td>{{this.employee_fname}}</td>
+            <td>{{this.employee_lname}}</td>
+            <td>{{this.employee_phone}}</td>
+            <td>{{this.hire_date}}</td>
+            
+            <td><button onclick="deleteEmployee({{this.employee_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_employee.js"></script>
+
+<h2>Add an Employee</h2>
+<p>To add a new Employee, please enter their information below and click 'Submit'!</p>
+<form id="add-employee-form-ajax">
+    <label for="input-employee_fname">First Name: </label>
+    <input type="text" name="input-employee_fname" id="input-employee_fname">
+    
+    <label for="input-employee_lname">Last Name </label>
+    <input type="text" name="input-employee_lname" id="input-employee_lname">
+
+    <label for="input-employee_phone">Phone: </label>
+    <input type="text" name="input-employee_phone" id="input-employee_phone">
+    
+    <label for="input-employee_hiredate">Hire Date </label>
+    <input type="date" name="input-employee_hiredate" id="input-employee_hiredate">
+
+    <input type="submit">
+</form>
+
+<script src="./js/add_employee.js"></script>

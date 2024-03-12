@@ -50,7 +50,7 @@ function deleteRow(developer_id){
 }
 
 function deleteDropDownMenu(developer_id){
-    let selectMenu = document.getElementById("input-developer_name");
+    let selectMenu = document.getElementById("input-developer_name-update");
     for (let i = 0; i < selectMenu.length; i++){
       if (Number(selectMenu.options[i].value) === Number(developer_id)){
         selectMenu[i].remove();

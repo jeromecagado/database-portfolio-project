@@ -1,0 +1,86 @@
+<table id="videogame-table">
+     <style>
+            body {
+                display: flex;
+                flex-direction: column;  
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+                width: 100px;
+            }
+            h1 {
+                text-align: center;
+            }
+            tr {
+                text-align: center;
+            }
+        </style>
+    {{!-- Header section --}}
+    <thead>
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.video_game_id}}>
+            <td>{{this.video_game_id}}</td>
+            <td>{{this.developer_id}}</td>
+            <td>{{this.video_game_name}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.quantity}}</td>
+            <td><button onclick="deleteVideogame({{this.video_game_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_videogame.js"></script>
+<!-- /views/index.hbs -->
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a Videogame</h2>
+<p>To add a new videogame, please enter their information below and click 'Submit'!</p>
+<form id="add-videogame-form-ajax">
+    <label for="input-developer_id">Developer: </label>
+    <select name ="input-developer_id" id="input-developer_id">
+        <option value="test">Select a Developer</option>
+        {{#each developers}}
+        <option value="{{this.developer_id}}">{{this.developer_name}}</option>
+        {{/each}}
+    </select>
+    
+    <label for="input-videogame_name">Videogame Name:</label>
+    <input type="text" name="input-videogame_name" id="input-videogame_name">
+
+    <label for="input-videogame_price">Price: </label>
+    <input type="text" name="input-videogame_price" id="input-videogame_price">
+
+    <label for="input-videogame_quantity">Quantity: </label>
+    <input type="text" name="input-videogame_quantity" id="input-videogame_quantity">
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_videogame.js"></script>

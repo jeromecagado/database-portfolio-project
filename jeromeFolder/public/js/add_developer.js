@@ -1,3 +1,9 @@
+/* # Citation for the following function: add_developer.js
+   # Date: 02/29/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+*/
+
 // Get the objects we need to modify
 let addDeveloperForm = document.getElementById('add-developer-form-ajax');
 
@@ -81,13 +87,14 @@ addRowToTable = (data) => {
     developer_countryCell.innerText = newRow.developer_country;
     developer_emailCell.innerText = newRow.developer_email;
 
-
-    deleteCell = document.createElement("TD");
-    deleteCell.innerHTML = "<button>Delete</button>";
+    
+    // Create the delete button
+    deleteCell = document.createElement("button");
+    deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function(){
         deleteDeveloper(newRow.developer_id);
     };
-
+    
 
     // Add the cells to the row 
     row.appendChild(developer_idCell);
@@ -101,4 +108,10 @@ addRowToTable = (data) => {
         
     // Add the row to the table
     currentTable.appendChild(row);
+
+    let selectMenu = document.getElementById("input-developer_name-update");
+    let option = document.createElement("option");
+    option.text = newRow.developer_name;
+    option.value = newRow.developer_id;
+    selectMenu.add(option);
 }

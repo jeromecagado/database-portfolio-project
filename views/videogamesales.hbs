@@ -1,0 +1,53 @@
+<table id="VideoGameSale-table">
+     <style>
+            body {
+                display: flex;
+                flex-direction: column;  
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+                width: 100px;
+            }
+            h1 {
+                text-align: center;
+            }
+            tr {
+                text-align: center;
+            }
+        </style>
+    {{!-- Header section --}}
+    <thead>
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.video_game_sales_id}}>
+            <td>{{this.sale_id}}</td>
+            <td>{{this.video_game_id}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

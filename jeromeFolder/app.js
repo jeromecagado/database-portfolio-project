@@ -58,7 +58,7 @@ app.get('/developers', function(req, res)
 app.get('/customers', function(req, res)
 {
 
-    let query1 = "SELECT * FROM Customers;"
+    let query1 = "SELECT * FROM Customers;";
 
     db.pool.query(query1, function(error, rows, fields){
     
@@ -105,17 +105,14 @@ app.get('/sales', function(req, res)
 })
 ;
 
-app.get('/video_game_sales', function(req, res)
+app.get('/videogamesales', function(req, res)
 {
-    
     let query1 = "SELECT * FROM VideoGameSales"
 
-    db.pool.query(query1, function(error,rows,fields){
+    db.pool.query(query1, function(error,rows, fields){
         
-        res.render('video_game_sales', {data: rows})
+        res.render('vieogamesales', {data: rows})
     })
-    
-    ;
 });
 
 app.get('/employees', function(req, res)
@@ -131,7 +128,7 @@ app.get('/employees', function(req, res)
 });
 
 // app.js - ROUTES section
-
+// Developer Routes
 app.post('/add-developer-ajax', function(req, res) 
 {
     // Capture the incoming data and parse it back to a JS object
@@ -150,7 +147,7 @@ app.post('/add-developer-ajax', function(req, res)
         }
         else
         {
-            // If there was no error, perform a SELECT * on bsg_people
+            // If there was no error, perform a SELECT * on Developers.
             query2 = `SELECT * FROM Developers;`;
             db.pool.query(query2, function(error, rows, fields){
 
@@ -191,9 +188,10 @@ app.delete('/delete-developer-ajax', function(req,res,next){
   
   })});
 
-  app.put('/put-developer-ajax', function(req,res,next){
+// Customer route.
+app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = data.developer_name;
+    let developer_id = data.developer_id;
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
@@ -204,18 +202,77 @@ app.delete('/delete-developer-ajax', function(req,res,next){
               if (error) {
   
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log(error);
+              console.log("Error updating developer:", error);
               res.sendStatus(400);
-              }
-  
-              // If there was no error, we run our second query and return that data so we can use it to update the people's
-              // table on the front-end
-              else
-              {
+              } else {
+                console.log("Developer udpated successfully");
+                res.sendStatus(200);
                 res.send(rows);
               }
-  })});
+})});
 
+
+app.post('/add-customer-ajax', function(req, res) 
+{
+    console.log("Reached add-customer-ajx route");
+    console.log("Request body:", req.body);
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+  
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.address}', '${data.city}', '${data.state}', '${data.zipcode}', '${data.email}', '${data.customer_phone}')`;
+    db.pool.query(query1, function(error, rows, fields){
+  
+        // Check to see if there was an error
+        if (error) {
+  
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else
+        {
+            // If there was no error, perform a SELECT * on Developers.
+            query2 = `SELECT * FROM Customers;`;
+            db.pool.query(query2, function(error, rows, fields){
+  
+                // If there was an error on the second query, send a 400
+                if (error) {
+                      
+                    // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                // If all went well, send the results of the query back.
+                else
+                {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+});
+  
+  
+app.delete('/delete-customer-ajax', function(req,res,next){
+    let data = req.body;
+    let customer_id = parseInt(data.customer_id);
+    let deleteCustomer= `DELETE FROM Customers WHERE customer_id = ?`;
+    
+    
+        // Run the 1st query
+        db.pool.query(deleteCustomer, [customer_id], function(error, rows, fields){
+            if (error) {
+    
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error);
+            res.sendStatus(400);
+            } else {
+            res.sendStatus(204);
+            }
+    
+})});
+  
 
 
   app.post('/add-employee-ajax', function(req, res) 
@@ -334,6 +391,31 @@ app.delete('/delete-developer-ajax', function(req,res,next){
                 res.send(rows);
               }
   })});
+
+app.put('/put-customer-ajax', function(req,res,next){
+    let data = req.body;
+    let customer_id = data.customer_id;
+    let customer_city = data.city;
+    let customer_state = data.state;
+    
+    let queryUpdateCustomer = `UPDATE Customers SET developer_state = ?, developer_email = ? WHERE customer_id = ?`;
+    
+        // Run the 1st query
+        db.pool.query(queryUpdateCustomer, [customer_city, customer_state, customer_id], function(error, rows, fields){
+            if (error) {
+    
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log("Error updating customer:", error);
+            res.sendStatus(400);
+            } else {
+                console.log("Customer udpated successfully");
+                res.sendStatus(200);
+                //res.send(rows);
+            }
+})});
+
+
+
 
 
 

@@ -1,0 +1,86 @@
+<table id="sale-table">
+     <style>
+            body {
+                display: flex;
+                flex-direction: column;  
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+                text-align: center;
+                width: 100px;
+            }
+            h1 {
+                text-align: center;
+            }
+            tr {
+                text-align: center;
+            }
+        </style>
+    {{!-- Header section --}}
+    <thead>
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{#each data}}
+        <tr data-value={{this.sale_id}}>
+            <td>{{this.sale_id}}</td>
+            <td>{{this.employee_id}}</td>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.sale_revenue}}</td>
+            <td>{{this.sold_date}}</td>
+            
+            <td><button onclick="deleteSale({{this.sale_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+
+<h2>Add an Sale</h2>
+<p>To add a new Sale, please enter their information below and click 'Submit'!</p>
+<form id="add-sale-form-ajax">
+    <label for="input-employee_id">Employee: </label>
+    <select name="input-employee_id" id="input-employee_id">
+                {{#each employees}}
+                <option value="{{this.employee_id}}">{{this.employee_fname}} {{this.employee_lname}}</option>
+                {{/each}}
+            </select>
+    
+    <label for="input-customer_id">Customer: </label>
+    <select name="input-customer_id" id="input-customer_id">
+                {{#each customers}}
+                <option value="{{this.customer_id}}">{{this.customer_fname}} {{this.customer_lname}}</option>
+                {{/each}}
+            </select>
+    <label for="input-sale_revenue">sale_revenue </label>
+    <input type="number" name="input-sale_revenue" id="input-sale_revenue">
+    
+    <label for="input-sold_date">Sold Date </label>
+    <input type="date" name="input-sold_date" id="input-sold_date">
+
+    <input type="submit">
+</form>
+<script src="./js/add_sale.js"></script>
