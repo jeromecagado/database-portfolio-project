@@ -220,7 +220,7 @@ app.post('/add-customer-ajax', function(req, res)
     let data = req.body;
   
     // Create the query and run it on the database
-    query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.address}', '${data.city}', '${data.state}', '${data.zipcode}', '${data.email}', '${data.customer_phone}')`;
+    query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.customer_address}', '${data.customer_city}', '${data.customer_state}', '${data.customer_zipcode}', '${data.customer_email}', '${data.customer_phone}')`;
     db.pool.query(query1, function(error, rows, fields){
   
         // Check to see if there was an error
