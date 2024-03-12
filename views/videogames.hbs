@@ -62,8 +62,8 @@
 <h2>Add a Videogame</h2>
 <p>To add a new videogame, please enter their information below and click 'Submit'!</p>
 <form id="add-videogame-form-ajax">
-    <label for="input-developer_id">Developer: </label>
-    <select name ="input-developer_id" id="input-developer_id">
+    <label for="input-developer">Developer: </label>
+    <select name ="input-developer" id="input-developer-ajax">
         <option value="test">Select a Developer</option>
         {{#each developers}}
         <option value="{{this.developer_id}}">{{this.developer_name}}</option>

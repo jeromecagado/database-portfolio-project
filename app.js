@@ -69,12 +69,15 @@ app.get('/customers', function(req, res)
 app.get('/videogames', function(req, res)
 {
     let query1 = "SELECT * FROM VideoGames;";
-    db.pool(query1, function(error,rows,fields){
 
-        let query2 = "SELECT developer_id, developer_name, FROM Developers";
+    let query2 = "SELECT * FROM Developers;";
 
-        db.pool.query(query2, function(error, developersData, fields){
-            res.render('videogames', {data: rows, developers: developersData})
+    db.pool.query(query1, function(error, rows, fields){
+        let videogame = rows;
+
+        db.pool.query(query2, (error, rows, fields) => {
+            let developers =rows;
+            return res.render('videogames', {data: videogame, developers: developers})
         })
     })
 });
@@ -102,17 +105,17 @@ app.get('/sales', function(req, res)
 
 app.get('/videogamesales', function(req, res)
 {
-    let query1 = "SELECT * FROM VideoGameSales;";
+ //   let query1 = "SELECT * FROM VideoGameSales;";
 
-    db.pool.query(query1, function(error,rows, fields){
+ //   db.pool.query(query1, function(error,rows, fields){
         
-        res.render('videogamesales', {data: rows})
-    })
+  //      res.render('videogamesales', {data: rows})
+  //  })
 });
 
 app.get('/employees', function(req, res)
 {
-    let query1 = "SELECT * FROM Employees"
+    let query1 = "SELECT * FROM Employees;";
     db.pool.query(query1, function(error,rows,fields){
         
         res.render('employees', {data: rows})
@@ -185,7 +188,7 @@ app.delete('/delete-developer-ajax', function(req,res,next){
 
 app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = data.developer_id;
+    let developer_id = parseInt(data.developer_name);
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
@@ -200,8 +203,8 @@ app.put('/put-developer-ajax', function(req,res,next){
               res.sendStatus(400);
               } else {
                 console.log("Developer udpated successfully");
-                res.sendStatus(200);
-                //res.send(rows);
+               // res.sendStatus(200);
+                res.send(rows);
               }
 })});
 
