@@ -107,7 +107,15 @@ app.get('/sales', function(req, res)
 
 app.get('/video_game_sales', function(req, res)
 {
-    res.render('video_game_sales');
+    
+    let query1 = "SELECT * FROM VideoGameSales"
+
+    db.pool.query(query1, function(error,rows,fields){
+        
+        res.render('video_game_sales', {data: rows})
+    })
+    
+    ;
 });
 
 app.get('/employees', function(req, res)
