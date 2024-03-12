@@ -183,9 +183,9 @@ app.delete('/delete-developer-ajax', function(req,res,next){
   
   })});
 
-app.put('/put-developer-ajax', function(req,res,next){
+app.put('/update-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = data.developer_id;
+    let developer_id = data.developer_name;
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
