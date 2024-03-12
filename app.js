@@ -183,7 +183,7 @@ app.delete('/delete-developer-ajax', function(req,res,next){
   
   })});
 
-app.put('/update-developer-ajax', function(req,res,next){
+ app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
     let developer_id = data.developer_name;
     let developer_country = data.developer_country;
@@ -196,14 +196,17 @@ app.put('/update-developer-ajax', function(req,res,next){
               if (error) {
   
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log("Error updating developer:", error);
+              console.log(error);
               res.sendStatus(400);
-              } else {
-                console.log("Developer udpated successfully");
-                res.sendStatus(200);
-                //res.send(rows);
               }
-})});
+  
+              // If there was no error, we run our second query and return that data so we can use it to update the people's
+              // table on the front-end
+              else
+              {
+                res.send(rows);
+              }
+  })});
 
 
 // Customer Route
