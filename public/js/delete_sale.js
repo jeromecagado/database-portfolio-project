@@ -21,7 +21,7 @@ function deleteSale(sale_id) {
     // Tell our AJAX request how to resolve
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
-
+            console.log("Sale deleted successfully");
             // Delete the data to the table
             deleteRow(sale_id);
 
@@ -35,7 +35,7 @@ function deleteSale(sale_id) {
 }
 
 
-function deleteRow(employee_id){
+function deleteRow(sale_id){
 
     let table = document.getElementById("sale-table");
     for (let i = 0, row; row = table.rows[i]; i++) {
@@ -52,11 +52,11 @@ function deleteRow(employee_id){
 
 
 // Creates a single row from an Object representing a single record from
-// bsg_people
+// sales.
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
-    let currentTable = document.getElementById("employee-table");
+    let currentTable = document.getElementById("sale-table");
 
     // Get the location where we should insert the new row (end of table)
     let newRowIndex = currentTable.rows.length;
@@ -78,14 +78,13 @@ addRowToTable = (data) => {
     sale_idCell.innerText = newRow.sale_id;
     customer_idCell.innerText = newRow.customer_id;
     sale_revenueCell.innerText = newRow.sale_revenue;
-    sold_dateCell.innerText = newRow.sold_dateCell;
+    sold_dateCell.innerText = newRow.sold_date;
 
     deleteCell = document.createElement("button");
     deleteCell.innerHTML = "Delete";
     deleteCell.onclick = function(){
-        deleteEmployee(newRow.sale_id);
+        deleteSale(newRow.sale_id);
     };
-
 
     // Add the cells to the row
     row.appendChild(sale_idCell);
