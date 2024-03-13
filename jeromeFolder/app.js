@@ -191,7 +191,7 @@ app.delete('/delete-developer-ajax', function(req,res,next){
 // Customer route.
 app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = data.developer_id;
+    let developer_id = parseInt(data.developer_name);
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
@@ -206,8 +206,8 @@ app.put('/put-developer-ajax', function(req,res,next){
               res.sendStatus(400);
               } else {
                 console.log("Developer udpated successfully");
-                res.sendStatus(200);
-                //res.send(rows);
+                
+                res.send(rows);
               }
 })});
 
@@ -220,7 +220,7 @@ app.post('/add-customer-ajax', function(req, res)
     let data = req.body;
   
     // Create the query and run it on the database
-    query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.address}', '${data.city}', '${data.state}', '${data.zipcode}', '${data.email}', '${data.customer_phone}')`;
+    query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.customer_address}', '${data.customer_city}', '${data.customer_state}', '${data.customer_zipcode}', '${data.customer_email}', '${data.customer_phone}')`;
     db.pool.query(query1, function(error, rows, fields){
   
         // Check to see if there was an error
@@ -362,57 +362,7 @@ app.delete('/delete-customer-ajax', function(req,res,next){
 
 
 
-  app.put('/put-customer-ajax', function(req,res,next){
-    let data = req.body;
-    let customer_id = data.customer_id;
-    let customer_address = data.customer_address;
-    let customer_city = data.customer_city;
-    let customer_state = data.customer_state;
-    let customer_zipcode = data.customer_zipcode;
-    let customer_email = data.customer_email;
-    let customer_phone = data.customer_phone;
-
   
-    let queryUpdateCustomer = `UPDATE Customers SET  address = ?, city = ?, state = ?, zipcode = ?, email = ?, customer_phone = ?   WHERE customer_id = ?`;
-  
-          // Run the 1st query
-          db.pool.query(queryUpdateCustomer, [customer_address, customer_city, customer_state,customer_zipcode,customer_email,customer_phone,customer_id], function(error, rows, fields){
-              if (error) {
-  
-              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log(error);
-              res.sendStatus(400);
-              }
-  
-              // If there was no error, we run our second query and return that data so we can use it to update the people's
-              // table on the front-end
-              else
-              {
-                res.send(rows);
-              }
-  })});
-
-app.put('/put-customer-ajax', function(req,res,next){
-    let data = req.body;
-    let customer_id = data.customer_id;
-    let customer_city = data.city;
-    let customer_state = data.state;
-    
-    let queryUpdateCustomer = `UPDATE Customers SET developer_state = ?, developer_email = ? WHERE customer_id = ?`;
-    
-        // Run the 1st query
-        db.pool.query(queryUpdateCustomer, [customer_city, customer_state, customer_id], function(error, rows, fields){
-            if (error) {
-    
-            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-            console.log("Error updating customer:", error);
-            res.sendStatus(400);
-            } else {
-                console.log("Customer udpated successfully");
-                res.sendStatus(200);
-                //res.send(rows);
-            }
-})});
 
 
 

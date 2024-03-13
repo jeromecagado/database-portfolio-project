@@ -198,14 +198,14 @@ app.put('/put-developer-ajax', function(req,res,next){
               if (error) {
   
               // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log("Error updating developer:", error);
+              console.log(error);
               res.sendStatus(400);
               } else {
                 console.log("Developer udpated successfully");
                // res.sendStatus(200);
                 res.send(rows);
               }
-})});
+  })});
 
 
 // Customer Route
