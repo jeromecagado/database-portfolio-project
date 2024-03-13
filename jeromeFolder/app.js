@@ -107,13 +107,32 @@ app.get('/sales', function(req, res)
 
 app.get('/videogamesales', function(req, res)
 {
-    let query1 = "SELECT * FROM VideoGameSales"
 
-    db.pool.query(query1, function(error,rows, fields){
+    let query1 = "SELECT * FROM VideoGameSales"
+    db.pool.query(query1, function(error,rows,fields){
+
+        let query2 = "SELECT sale_id,customer_id, Customers.customer_fname, Customers.customer_lname FROM Sales JOIN Customers ON Sales.customer_id = Customers.customer_id";
+
+        db.pool.query(query2,function(error,salesData,fields){
+            
+
+            let query3 = "SELECT video_game_id,video_game_name FROM VideoGames";
+
+            db.pool.query(query3,function(error,videogamesData,fields){
+                res.render('videogamesales', {data: rows,sales:salesData,videogames: videogamesData})
+
+
+            })
+        })
+
         
-        res.render('vieogamesales', {data: rows})
+        
     })
-});
+
+})
+;
+
+
 
 app.get('/employees', function(req, res)
 {

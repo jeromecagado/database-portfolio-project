@@ -103,14 +103,7 @@ app.get('/sales', function(req, res)
 })
 ;
 
-app.get('/videogamesales', function(req, res)
-{
- //   let query1 = "SELECT * FROM VideoGameSales;";
 
- //   db.pool.query(query1, function(error,rows, fields){
-    //    res.render('videogamesales', {data: rows});
-  //  })
-});
 
 app.get('/employees', function(req, res)
 {
@@ -450,6 +443,28 @@ app.delete('/delete-videogame-ajax', function(req,res,next){
             }
     
 })});
+
+
+app.get('/videogamesales', function(req, res)
+{
+
+    let query1 = "SELECT * FROM VideoGameSales;";
+    db.pool.query(query1, function(error,rows,fields){
+
+        let query2 = "SELECT employee_id, employee_fname, employee_lname FROM Employees";
+
+        db.pool.query(query2,function(error,employeesData,fields){
+            
+
+            let query3 = "SELECT customer_id,customer_fname,customer_lname FROM Customers";
+
+            db.pool.query(query3,function(error,customerData,fields){
+                res.render('sales', {data: rows,employees:employeesData,customers: customerData})
+            })
+        })
+    })
+})
+;
 
 
 
