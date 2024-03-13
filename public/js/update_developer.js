@@ -1,3 +1,10 @@
+/* # Citation for the following function: update_developer.js
+   # Date: 02/29/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+*/
+
+
 
 // Get the objects we need to modify
 let updateDeveloperForm = document.getElementById('update-developer-form-ajax');
@@ -36,7 +43,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
             // Add the new data to the table
-            updateRow(xhttp.response, data.developer_name);
+            updateRow(xhttp.response, developer_nameValue);
 
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
@@ -50,7 +57,7 @@ updateDeveloperForm.addEventListener("submit", function (e) {
 })
 
 
-function updateRow(data, developer_id){
+function updateRow(data, developer_name){
     let parsedData = JSON.parse(data);
     
     let table = document.getElementById("developer-table");
@@ -58,12 +65,15 @@ function updateRow(data, developer_id){
     for (let i = 0, row; row = table.rows[i]; i++) {
        //iterate through rows
        //rows would be accessed using the "row" variable assigned in the for loop
-       if (table.rows[i].getAttribute("data-value") == developer_id) {
+       if (table.rows[i].getAttribute("data-value") == developer_name) {
 
             // Get the location of the row where we found the matching developer ID
             let updateRowIndex = table.getElementsByTagName("tr")[i];
 
             // Get td of country and email values.
+            let tdName = updateRowIndex.getElementsByTagName("td")[1];
+            let tdCountry = updateRowIndex.getElementsByTagName("td")[2];
+            let tdEmail = updateRowIndex.getElementsByTagName("td")[3];
             let tdName = updateRowIndex.getElementsByTagName("td")[1];
             let tdCountry = updateRowIndex.getElementsByTagName("td")[2];
             let tdEmail = updateRowIndex.getElementsByTagName("td")[3];

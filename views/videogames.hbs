@@ -62,7 +62,7 @@
 <h2>Add a Videogame</h2>
 <p>To add a new videogame, please enter their information below and click 'Submit'!</p>
 <form id="add-videogame-form-ajax">
-    <label for="input-developer_id">Developer: </label>
+    <label for="input-developer">Developer: </label>
     <select name ="input-developer_id" id="input-developer_id">
         <option value="test">Select a Developer</option>
         {{#each developers}}
@@ -70,14 +70,14 @@
         {{/each}}
     </select>
     
-    <label for="input-videogame_name">Videogame Name:</label>
-    <input type="text" name="input-videogame_name" id="input-videogame_name">
+    <label for="input-video_game_name">Videogame Name:</label>
+    <input type="text" name="input-video_game_name" id="input-video_game_name">
 
-    <label for="input-videogame_price">Price: </label>
-    <input type="text" name="input-videogame_price" id="input-videogame_price">
+    <label for="input-price">Price: </label>
+    <input type="text" name="input-price" id="input-price">
 
-    <label for="input-videogame_quantity">Quantity: </label>
-    <input type="text" name="input-videogame_quantity" id="input-videogame_quantity">
+    <label for="input-quantity">Quantity: </label>
+    <input type="text" name="input-quantity" id="input-quantity">
 
     <input type="submit">
 </form>

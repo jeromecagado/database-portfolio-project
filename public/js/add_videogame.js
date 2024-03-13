@@ -29,10 +29,11 @@ addVideogameForm.addEventListener("submit", function (e) {
     let data = {
         developer_id: developerIdValue,
         video_game_name: videogameNameValue,
-        videogame_price: videogamePriceValue,
-        videogame_quantity: videogameQuantity,
+        price: videogamePriceValue,
+        quantity: videogameQuantity,
     }
-    
+   
+    console.log(data);
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-videogame-ajax", true);

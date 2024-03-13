@@ -84,8 +84,6 @@ PRIMARY KEY (video_games_sales_id),
 FOREIGN KEY (sale_id) REFERENCES Sales(sale_id) ON DELETE CASCADE,
 FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) 
 
-
-
 );
 
 
@@ -125,14 +123,9 @@ VALUES(3, "Angry Fish", 5.00, 10),
 
 
 -- Adds in details for the intersection of video games and sales
-INSERT VideoGameSales(sale_id, video_game_id, list_price,quantity_sold)
+INSERT VideoGameSales(sale_id, video_game_id)
 VALUES(1,1),
-(2,2),
-(3,3);
-
-
-
-
+(2,2);
 
 
 SET FOREIGN_KEY_CHECKS=1;
