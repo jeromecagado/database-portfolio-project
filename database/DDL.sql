@@ -82,7 +82,7 @@ sale_id INT NOT NULL,
 video_game_id  INT NOT NULL,
 PRIMARY KEY (video_games_sales_id),
 FOREIGN KEY (sale_id) REFERENCES Sales(sale_id) ON DELETE CASCADE,
-FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) 
+FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) ON DELETE CASCADE 
 
 );
 
