@@ -111,7 +111,7 @@ app.get('/videogamesales', function(req, res)
     let query1 = "SELECT * FROM VideoGameSales"
     db.pool.query(query1, function(error,rows,fields){
 
-        let query2 = "SELECT sale_id,customer_id, Customers.customer_fname, Customers.customer_lname FROM Sales JOIN Customers ON Sales.customer_id = Customers.customer_id";
+        let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname, sold_date AS customer_fname FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
 
         db.pool.query(query2,function(error,salesData,fields){
             
@@ -186,6 +186,51 @@ app.post('/add-developer-ajax', function(req, res)
         }
     })
 });
+
+
+app.post('/add-videogamesale-ajax', function(req, res) 
+{
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO VideoGameSales (sale_id, video_game_id) VALUES ('${data.developer_name}', '${data.developer_country}', '${data.developer_email}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else
+        {
+            // If there was no error, perform a SELECT * on Developers.
+            query2 = `SELECT * FROM VideoGameSales;`;
+            db.pool.query(query2, function(error, rows, fields){
+
+                // If there was an error on the second query, send a 400
+                if (error) {
+                    
+                    // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                // If all went well, send the results of the query back.
+                else
+                {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+});
+
+
+
+
+
 
 
 app.delete('/delete-developer-ajax', function(req,res,next){

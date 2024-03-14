@@ -55,3 +55,26 @@
         {{/each}}
     </tbody>
 </table>
+
+
+
+<h2>Add a Sale</h2>
+<p>To add a new Sale, please enter their information below and click 'Submit'!</p>
+<form id="add-videogamesale-form-ajax">
+    <label for="input-sale_id">Customer and Date: </label>
+    <select name="input-sale_id" id="input-sale_id">
+                {{#each sales}}
+                <option value="{{this.sale_id}}">{{this.sale_id}} {{this.customer_fname}} {{this.sold_date}}</option>
+                {{/each}}
+            </select>
+    
+    <label for="input-videogame_id">Video Game: </label>
+    <select name="input-videogame_id" id="input-videogame_id">
+                {{#each videogames}}
+                <option value="{{this.video_game_id}}">{{this.video_game_name}}</option>
+                {{/each}}
+            </select>
+ 
+    <input type="submit">
+</form>
+<script src="./js/add_videogamesale.js"></script>

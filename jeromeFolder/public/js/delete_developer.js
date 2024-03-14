@@ -43,7 +43,7 @@ function deleteRow(developer_id){
        //rows would be accessed using the "row" variable assigned in the for loop
        if (table.rows[i].getAttribute("data-value") == developer_id) {
             table.deleteRow(i);
-            deleteDropDownMenu(developer_id);
+            //deleteDropDownMenu(developer_id);
             break;
        }
     }

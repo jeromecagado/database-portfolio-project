@@ -459,7 +459,7 @@ app.get('/videogamesales', function(req, res)
             let query3 = "SELECT customer_id,customer_fname,customer_lname FROM Customers";
 
             db.pool.query(query3,function(error,customerData,fields){
-                res.render('sales', {data: rows,employees:employeesData,customers: customerData})
+                res.render('ales', {data: rows,employees:employeesData,customers: customerData})
             })
         })
     })
