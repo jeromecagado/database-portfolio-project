@@ -74,9 +74,7 @@ function updateRow(data, developer_name){
             let tdName = updateRowIndex.getElementsByTagName("td")[1];
             let tdCountry = updateRowIndex.getElementsByTagName("td")[2];
             let tdEmail = updateRowIndex.getElementsByTagName("td")[3];
-            let tdName = updateRowIndex.getElementsByTagName("td")[1];
-            let tdCountry = updateRowIndex.getElementsByTagName("td")[2];
-            let tdEmail = updateRowIndex.getElementsByTagName("td")[3];
+           
 
             // Reassing name, country and email values.
             tdName.innerHTML = parsedData[0].developer_name;

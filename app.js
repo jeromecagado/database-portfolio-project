@@ -444,27 +444,72 @@ app.delete('/delete-videogame-ajax', function(req,res,next){
     
 })});
 
-
 app.get('/videogamesales', function(req, res)
 {
 
-    let query1 = "SELECT * FROM VideoGameSales;";
+    let query1 = "SELECT * FROM VideoGameSales"
     db.pool.query(query1, function(error,rows,fields){
 
-        let query2 = "SELECT employee_id, employee_fname, employee_lname FROM Employees";
+        let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname AS customer_fname, sold_date FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
 
-        db.pool.query(query2,function(error,employeesData,fields){
+        db.pool.query(query2,function(error,salesData,fields){
             
 
-            let query3 = "SELECT customer_id,customer_fname,customer_lname FROM Customers";
+            let query3 = "SELECT video_game_id,video_game_name FROM VideoGames";
 
-            db.pool.query(query3,function(error,customerData,fields){
-                res.render('ales', {data: rows,employees:employeesData,customers: customerData})
+            db.pool.query(query3,function(error,videogamesData,fields){
+                res.render('videogamesales', {data: rows,sales:salesData,videogames: videogamesData})
+
+
             })
         })
+
+        
+        
     })
+
 })
 ;
+
+app.post('/add-videogamesale-ajax', function(req, res) 
+{
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO VideoGameSales (sale_id, video_game_id) VALUES ('${data.developer_name}', '${data.developer_country}', '${data.developer_email}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else
+        {
+            // If there was no error, perform a SELECT * on Developers.
+            query2 = `SELECT * FROM VideoGameSales;`;
+            db.pool.query(query2, function(error, rows, fields){
+
+                // If there was an error on the second query, send a 400
+                if (error) {
+                    
+                    // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                // If all went well, send the results of the query back.
+                else
+                {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+});
+
 
 
 

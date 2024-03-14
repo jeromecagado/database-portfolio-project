@@ -47,19 +47,24 @@
         <tr data-value={{this.video_game_sales_id}}>
             <td>{{this.sale_id}}</td>
             <td>{{this.video_game_id}}</td>
+            
+           
+            
+            <td><button onclick="deleteSale({{this.video_game_sales_id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
 
 
+
 <h2>Add a Sale</h2>
 <p>To add a new Sale, please enter their information below and click 'Submit'!</p>
 <form id="add-videogamesale-form-ajax">
-    <label for="input-sale_id">Sale: </label>
+    <label for="input-sale_id">Customer and Date: </label>
     <select name="input-sale_id" id="input-sale_id">
                 {{#each sales}}
-                <option value="{{this.sale_id}}">{{this.Customers.customer_fname}} {{this.Customers.customer_lname}}</option>
+                <option value="{{this.sale_id}}">{{this.sale_id}}{{this.customer_fname}} {{this.}}</option>
                 {{/each}}
             </select>
     
