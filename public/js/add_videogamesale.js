@@ -15,28 +15,25 @@ addVideogameForm.addEventListener("submit", function (e) {
 
     // Get form fields we need to get data from
     let inputSaleID = document.getElementById("input-sale_id");
-    let inputVideogameName = document.getElementById("input-video_game_id");
-    let inputPrice = document.getElementById("input-price");
-    let inputQuantity = document.getElementById("input-quantity");
+    let inputVideoGameID = document.getElementById("input-videogame_id");
+    
 
     // Get the values from the form fields
-    let developerIdValue = inputSaleID.value;
-    let videogameNameValue = inputVideogameName.value;
-    let videogamePriceValue = inputPrice.value;
-    let videogameQuantity = inputQuantity.value;
+    let saleIdValue = inputSaleID.value;
+    let videoGameIdValue = inputVideoGameID.value;
+    
 
     // Put our data we want to send in a javascript object
     let data = {
-        developer_id: developerIdValue,
-        video_game_name: videogameNameValue,
-        price: videogamePriceValue,
-        quantity: videogameQuantity,
+        sale_id: saleIdValue,
+        video_game_id: videoGameIdValue,
+    
     }
    
     console.log(data);
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-videogame-ajax", true);
+    xhttp.open("POST", "/add-videogamesale-ajax", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     // Tell our AJAX request how to resolve
@@ -48,9 +45,8 @@ addVideogameForm.addEventListener("submit", function (e) {
 
             // Clear the input fields for another transaction
             inputSaleID.value = '';
-            inputVideogameName.value = '';
-            inputPrice.value = '';
-            inputQuantity.value = '';
+            inputVideoGameID.value = '';
+            
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
@@ -79,39 +75,35 @@ addRowToTable = (data) => {
 
     // Create a row and 4 cells
     let row = document.createElement("TR");
+    let video_game_sale_idCell = document.createElement("TD");
+    let sale_idCell = document.createElement("TD");
     let video_game_idCell = document.createElement("TD");
-    let developer_idCell = document.createElement("TD");
-    let video_game_nameCell = document.createElement("TD");
-    let priceCell = document.createElement("TD");
-    let quantityCell = document.createElement("TD");
+    
 
     let deleteCell = document.createElement("TD");
 
     // Fill the cells with correct data
+    video_game_sale_idCell.innerText = newRow.video_game_sale_id;
+    sale_idCell.innerText = newRow.sale_id;
     video_game_idCell.innerText = newRow.video_game_id;
-    developer_idCell.innerText = newRow.developer_id;
-    video_game_nameCell.innerText = newRow.video_game_name;
-    priceCell.innerText = newRow.price;
-    quantityCell.innerText = newRow.quantity;
+    
 
     
     // Create the delete button
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell = document.createElement("TD");
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
-        deleteVideogame(newRow.video_game_id);
+        deleteVideogame(newRow.video_game_sale_id);
     };
     
 
     // Add the cells to the row 
+    row.appendChild(video_game_sale_idCell);
+    row.appendChild(sale_idCell);
     row.appendChild(video_game_idCell);
-    row.appendChild(developer_idCell);
-    row.appendChild(video_game_nameCell);
-    row.appendChild(priceCell);
-    row.appendChild(quantityCell);
     row.appendChild(deleteCell);
 
-    row.setAttribute('data-value', newRow.video_game_id);
+    row.setAttribute('data-value', newRow.video_game_sale_id);
 
         
     // Add the row to the table
