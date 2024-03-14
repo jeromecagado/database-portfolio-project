@@ -83,7 +83,7 @@ addRowToTable = (data) => {
     let deleteCell = document.createElement("TD");
 
     // Fill the cells with correct data
-    video_game_sale_idCell.innerText = newRow.video_game_sale_id;
+    video_game_sale_idCell.innerText = newRow.video_games_sales_id;
     sale_idCell.innerText = newRow.sale_id;
     video_game_idCell.innerText = newRow.video_game_id;
     
@@ -93,7 +93,7 @@ addRowToTable = (data) => {
     deleteCell = document.createElement("TD");
     deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
-        deleteVideogame(newRow.video_game_sale_id);
+        deleteVideogame(newRow.video_games_sales_id);
     };
     
 
@@ -103,7 +103,7 @@ addRowToTable = (data) => {
     row.appendChild(video_game_idCell);
     row.appendChild(deleteCell);
 
-    row.setAttribute('data-value', newRow.video_game_sale_id);
+    row.setAttribute('data-value', newRow.video_games_sales_id);
 
         
     // Add the row to the table

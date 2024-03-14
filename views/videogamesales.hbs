@@ -44,7 +44,8 @@
 
         {{!-- For each row, print the id, name, country, and email in order --}}
         {{#each data}}
-        <tr data-value={{this.video_game_sales_id}}>
+        <tr data-value={{this.video_games_sales_id}}>
+            <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
             <td>{{this.video_game_id}}</td>
             
@@ -64,7 +65,7 @@
     <label for="input-sale_id">Customer and Date: </label>
     <select name="input-sale_id" id="input-sale_id">
                 {{#each sales}}
-                <option value="{{this.sale_id}}">{{this.sale_id}}{{this.customer_fname}} {{this.}}</option>
+                <option value="{{this.sale_id}}">{{this.sale_id}} {{this.customer_fname}} </option>
                 {{/each}}
             </select>
     

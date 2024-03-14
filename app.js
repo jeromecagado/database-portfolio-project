@@ -477,7 +477,7 @@ app.post('/add-videogamesale-ajax', function(req, res)
     let data = req.body;
 
     // Create the query and run it on the database
-    query1 = `INSERT INTO VideoGameSales (sale_id, video_game_id) VALUES ('${data.sale_id}', '${data.video_game_id}', '${data.developer_email}')`;
+    query1 = `INSERT INTO VideoGameSales (sale_id, video_game_id) VALUES ('${data.sale_id}', '${data.video_game_id}')`;
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
