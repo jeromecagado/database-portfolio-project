@@ -55,7 +55,7 @@ sale_revenue DECimal(10,2) NOT NULL,
 sold_date DATE,
 
 PRIMARY KEY(sale_id),
-FOREIGN KEY (employee_id) REFERENCES Employees(employee_id),
+FOREIGN KEY (employee_id) REFERENCES Employees(employee_id) ON DELETE SET NULL,
 FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE
 );
 
