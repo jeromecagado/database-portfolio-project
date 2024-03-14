@@ -64,7 +64,7 @@ addVideogameForm.addEventListener("submit", function (e) {
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
-    let currentTable = document.getElementById("videogamesale-table");
+    let currentTable = document.getElementById("videogamesales-table");
 
     // Get the location where we should insert the new row (end of table)
     let newRowIndex = currentTable.rows.length;
@@ -82,6 +82,7 @@ addRowToTable = (data) => {
 
     let deleteCell = document.createElement("TD");
 
+    console.log(data)
     // Fill the cells with correct data
     video_game_sale_idCell.innerText = newRow.video_games_sales_id;
     sale_idCell.innerText = newRow.sale_id;
@@ -93,7 +94,7 @@ addRowToTable = (data) => {
     deleteCell = document.createElement("TD");
     deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
-        deleteVideogame(newRow.video_games_sales_id);
+        deleteVideoGameSale(newRow.video_games_sales_id);
     };
     
 

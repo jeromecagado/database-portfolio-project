@@ -177,6 +177,26 @@ app.delete('/delete-developer-ajax', function(req,res,next){
               }
   
   })});
+
+  app.delete('/delete-videogamesale-ajax', function(req,res,next){
+    let data = req.body;
+    let video_games_sales_id = parseInt(data.video_games_sales_id);
+    let deleteVideoGameSales= `DELETE FROM VideoGameSales WHERE video_games_sales_id = ?`;
+  
+  
+          // Run the 1st query
+          db.pool.query(deleteVideoGameSales, [video_games_sales_id], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              } else {
+                res.sendStatus(204);
+              }
+  
+  })});
+
 // Update developer.
 app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
