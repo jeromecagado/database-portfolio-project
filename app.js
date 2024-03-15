@@ -96,7 +96,11 @@ app.get('/sales', function(req, res)
             let query3 = "SELECT customer_id,customer_fname,customer_lname FROM Customers";
 
             db.pool.query(query3,function(error,customerData,fields){
-                res.render('sales', {data: rows,employees:employeesData,customers: customerData})
+
+                let query4 = "SELECT video_game_name, video_game_id FROM VideoGames"
+                db.pool.query(query4,function(error,videogameData,fields){
+                    res.render('sales', {data: rows,employees:employeesData,customers: customerData, videogame:videogameData})
+                })
             })
         })
     })
