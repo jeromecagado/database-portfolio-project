@@ -1,4 +1,4 @@
-# All codes is based on the CS 340 starter code, with the exception of formatting dates in employee.hbs, sales.hbs and the get functions for both employee and sales in app.js. That code is based on this ed dicussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, is the one who suggested using the following:
+All codes is based on the CS 340 starter code, with the exception of formatting dates in employee.hbs, sales.hbs and the get functions for both employee and sales in app.js. That code is based on this ed dicussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, is the one who suggested using the following:
 
 const moment = require('moment');
 const Handlebars = require('handlebars');
