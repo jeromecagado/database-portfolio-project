@@ -20,11 +20,19 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 
+
 // Handle Bars
 const { engine } = require('express-handlebars');
 var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+
+const moment = require('moment');
+const Handlebars = require('handlebars');
+
+Handlebars.registerHelper('formatDate', function(dateString, format = 'MMM DD, YYYY') {
+  return moment(dateString).format(format);
+});
 
 
 // Database
@@ -103,7 +111,14 @@ app.get('/sales', function(req, res)
 })
 ;
 
+app.get('/videogamesales', function(req, res)
+{
+ //   let query1 = "SELECT * FROM VideoGameSales;";
 
+ //   db.pool.query(query1, function(error,rows, fields){
+    //    res.render('videogamesales', {data: rows});
+  //  })
+});
 
 app.get('/employees', function(req, res)
 {
@@ -112,8 +127,6 @@ app.get('/employees', function(req, res)
         
         res.render('employees', {data: rows})
     })
-
-
 
 });
 

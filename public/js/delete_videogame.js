@@ -80,8 +80,8 @@ addRowToTable = (data) => {
     quantityCell.innerText = newRow.quantity;
 
 
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell = document.createElement("TD");
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteDeveloper(newRow.video_game_id);
     };

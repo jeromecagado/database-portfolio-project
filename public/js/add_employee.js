@@ -18,7 +18,7 @@ addEmployeeForm.addEventListener("submit", function (e) {
     let employeeLNameValue = inputEmployeeLName.value;
     let employeePhoneValue = inputEmployeePhone.value;
     let employeeHiredateValue = inputEmployeeHiredate.value;
-
+    
     // Put our data we want to send in a javascript object
     let data = {
         employee_fname: employeeFNameValue,

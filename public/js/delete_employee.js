@@ -82,8 +82,8 @@ addRowToTable = (data) => {
     employee_phoneCell.innerText = newRow.employee_phone;
     hire_dateCell.innerText = newRow.hire_date;
 
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell = document.createElement("TD");
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteEmployee(newRow.employee_id);
     };
