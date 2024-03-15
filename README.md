@@ -1,4 +1,4 @@
-For formating dates. We were able to format dates correctly using suggestions from this ed discussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, suggested to use the following: 
+For formating dates. We first imported the moment library using npm install moment. We were able to format dates correctly using suggestions from this ed discussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, suggested to use the following: 
 
 const moment = require('moment');
 const Handlebars = require('handlebars');
