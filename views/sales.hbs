@@ -50,7 +50,9 @@
             <td>{{this.employee_id}}</td>
             <td>{{this.customer_id}}</td>
             <td>{{this.sale_revenue}}</td>
-            <td>{{this.sold_date}}</td>
+        
+         {{!-- The following formatDate was used because of Cuong Duong's suggestion to use moment with handlebars in the ed discussion reflected in the readme.--}}
+            <td>{{formatDate this.sold_date 'MMM DD, YYYY'}}</td>
             
             <td><button onclick="deleteSale({{this.sale_id}})">Delete</button></td>
         </tr>

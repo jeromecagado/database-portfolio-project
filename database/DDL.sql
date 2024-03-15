@@ -55,7 +55,7 @@ sale_revenue DECimal(10,2) NOT NULL,
 sold_date DATE,
 
 PRIMARY KEY(sale_id),
-FOREIGN KEY (employee_id) REFERENCES Employees(employee_id),
+FOREIGN KEY (employee_id) REFERENCES Employees(employee_id) ON DELETE SET NULL,
 FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE
 );
 
@@ -82,7 +82,7 @@ sale_id INT NOT NULL,
 video_game_id  INT NOT NULL,
 PRIMARY KEY (video_games_sales_id),
 FOREIGN KEY (sale_id) REFERENCES Sales(sale_id) ON DELETE CASCADE,
-FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) 
+FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) ON DELETE CASCADE 
 
 );
 

@@ -80,8 +80,8 @@ addRowToTable = (data) => {
     sale_revenueCell.innerText = newRow.sale_revenue;
     sold_dateCell.innerText = newRow.sold_date;
 
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell = document.createElement("TD");
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteSale(newRow.sale_id);
     };

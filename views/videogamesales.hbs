@@ -36,7 +36,6 @@
                 {{@key}}
             </th>
             {{/each}}
-            <th>delete</th>
         </tr>
     </thead>
 
@@ -45,6 +44,7 @@
         {{!-- For each row, print the id, name, country, and email in order --}}
         {{#each data}}
         <tr data-value={{this.video_game_sales_id}}>
+            <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
             <td>{{this.video_game_id}}</td>
         </tr>
