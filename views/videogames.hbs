@@ -1,3 +1,11 @@
+{{! -- # Citation for the following function: videogames.hbs
+   # Date: 03/14/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+}}
+
+
+
 <table id="videogame-table">
      <style>
             body {
@@ -30,6 +38,7 @@
     <thead>
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
+        {{!-- This Section was our code, because we wanted the tables to look a certain way. --}}
         <tr>
             <th>ID</th>            
             <th>Developer</th>
@@ -42,7 +51,7 @@
 
     <tbody>
 
-        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{!-- For each row, print the videogame id, developer id, videogame name, price and quantity in order --}}
         {{#each data}}
         <tr data-value={{this.video_game_id}}>
             <td>{{this.video_game_id}}</td>

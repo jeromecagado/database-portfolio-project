@@ -1,3 +1,12 @@
+/* # Citation for the following function: add_employer.js
+   # Date: 03/14/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+*/
+
+
+
+
 // Get the objects we need to modify
 let addEmployeeForm = document.getElementById('add-employee-form-ajax');
 

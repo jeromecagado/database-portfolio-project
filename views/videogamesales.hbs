@@ -1,3 +1,11 @@
+{{! -- # Citation for the following function: videogamesales.hbs
+   # Date: 03/14/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+}}
+
+
+
 <table id="videogamesales-table">
      <style>
             body {
@@ -36,28 +44,24 @@
                 {{@key}}
             </th>
             {{/each}}
+            <th>Delete</th>
         </tr>
     </thead>
 
     <tbody>
 
-        {{!-- For each row, print the id, name, country, and email in order --}}
+        {{!-- For each row, print the id's for videogamesales, saleid, and videogame id in order --}}
         {{#each data}}
         <tr data-value={{this.video_games_sales_id}}>
             <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
             <td>{{this.video_game_id}}</td>
-            
-           
-            
             <td><button onclick="deleteVideoGameSale({{this.video_games_sales_id}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-
 <script src="./js/delete_videogamesale.js"></script>
-
 
 
 <h2>Add a Sale</h2>
@@ -69,14 +73,12 @@
                 <option value="{{this.sale_id}}">{{this.sale_id}} {{this.customer_fname}} </option>
                 {{/each}}
             </select>
-    
     <label for="input-videogame_id">Video Game: </label>
     <select name="input-videogame_id" id="input-videogame_id">
                 {{#each videogames}}
                 <option value="{{this.video_game_id}}">{{this.video_game_name}}</option>
                 {{/each}}
             </select>
- 
     <input type="submit">
 </form>
 <script src="./js/add_videogamesale.js"></script>

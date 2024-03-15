@@ -1,4 +1,4 @@
-/* # Citation for the following function: add_developer.js
+/* # Citation for the following function: add_videogame.js
    # Date: 02/29/2024
    # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main

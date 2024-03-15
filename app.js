@@ -13,8 +13,6 @@
 var express = require('express');   // We are using the express library for the web server
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
 PORT        = 9721;                 // Set a port number at the top so it's easy to change in the future
-
-
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
@@ -27,6 +25,7 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
+// Momment setup with formatting date. 
 const moment = require('moment');
 const Handlebars = require('handlebars');
 
@@ -111,15 +110,6 @@ app.get('/sales', function(req, res)
 })
 ;
 
-app.get('/videogamesales', function(req, res)
-{
- //   let query1 = "SELECT * FROM VideoGameSales;";
-
- //   db.pool.query(query1, function(error,rows, fields){
-    //    res.render('videogamesales', {data: rows});
-  //  })
-});
-
 app.get('/employees', function(req, res)
 {
     let query1 = "SELECT * FROM Employees;";
@@ -171,7 +161,7 @@ app.post('/add-developer-ajax', function(req, res)
     })
 });
 
-
+// Delete developer from table by deleting developer_id. 
 app.delete('/delete-developer-ajax', function(req,res,next){
     let data = req.body;
     let developer_id = parseInt(data.developer_id);
@@ -191,24 +181,6 @@ app.delete('/delete-developer-ajax', function(req,res,next){
   
   })});
 
-  app.delete('/delete-videogamesale-ajax', function(req,res,next){
-    let data = req.body;
-    let video_games_sales_id = parseInt(data.video_games_sales_id);
-    let deleteVideoGameSales= `DELETE FROM VideoGameSales WHERE video_games_sales_id = ?`;
-  
-  
-          // Run the 1st query
-          db.pool.query(deleteVideoGameSales, [video_games_sales_id], function(error, rows, fields){
-              if (error) {
-  
-              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
-              console.log(error);
-              res.sendStatus(400);
-              } else {
-                res.sendStatus(204);
-              }
-  
-  })});
 
 // Update developer.
 app.put('/put-developer-ajax', function(req,res,next){
@@ -274,7 +246,7 @@ app.post('/add-customer-ajax', function(req, res)
     })
 });
   
-  
+// Delete customer from table by deleting customer_id. 
 app.delete('/delete-customer-ajax', function(req,res,next){
     let data = req.body;
     let customer_id = parseInt(data.customer_id);
@@ -335,7 +307,7 @@ app.post('/add-employee-ajax', function(req, res) {
     })
 });
 
-
+// Delete employee from table via employee_id. 
 app.delete('/delete-employee-ajax', function(req,res,next){
     let data = req.body;
     let employee_id = parseInt(data.employee_id);
@@ -396,7 +368,7 @@ app.post('/add-sale-ajax', function(req, res)
     })
 });
 
-
+// Delete sales from table via sales_id. 
 app.delete('/delete-sale-ajax', function(req,res,next){
     let data = req.body;
     let sale_id = parseInt(data.sale_id);
@@ -458,6 +430,7 @@ app.post('/add-videogame-ajax', function(req, res)
     })
 });
 
+// Delete videogame from table via video_game_id. 
 app.delete('/delete-videogame-ajax', function(req,res,next){
     let data = req.body;
     let video_game_id = parseInt(data.video_game_id);
@@ -477,6 +450,10 @@ app.delete('/delete-videogame-ajax', function(req,res,next){
     
 })});
 
+/* 
+M:M Intersection table, videogamesales. 
+*/
+
 app.get('/videogamesales', function(req, res)
 {
 
@@ -486,23 +463,16 @@ app.get('/videogamesales', function(req, res)
         let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname AS customer_fname, sold_date FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
 
         db.pool.query(query2,function(error,salesData,fields){
-            
 
             let query3 = "SELECT video_game_id,video_game_name FROM VideoGames";
 
             db.pool.query(query3,function(error,videogamesData,fields){
                 res.render('videogamesales', {data: rows,sales:salesData,videogames: videogamesData})
 
-
             })
         })
-
-        
-        
     })
-
-})
-;
+});
 
 app.post('/add-videogamesale-ajax', function(req, res) 
 {
@@ -543,10 +513,25 @@ app.post('/add-videogamesale-ajax', function(req, res)
     })
 });
 
-
-
-
-
+// Delete videogamesales from table by deleting videogame_id. 
+app.delete('/delete-videogamesale-ajax', function(req,res,next){
+    let data = req.body;
+    let video_games_sales_id = parseInt(data.video_games_sales_id);
+    let deleteVideoGameSales= `DELETE FROM VideoGameSales WHERE video_games_sales_id = ?`;
+  
+  
+          // Run the 1st query
+          db.pool.query(deleteVideoGameSales, [video_games_sales_id], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              } else {
+                res.sendStatus(204);
+              }
+  
+  })});
 
 /*
     LISTENER

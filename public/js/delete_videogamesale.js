@@ -1,3 +1,11 @@
+/* # Citation for the following function: delete_videogamesale.js
+   # Date: 03/14/2024
+   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
+*/
+
+
+
 function deleteVideoGameSale(video_games_sales_id) {
     // Put our data we want to send in a javascript object
     let data = {
