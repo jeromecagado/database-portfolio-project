@@ -1,6 +1,6 @@
 /* # Citation for the following function: add_sale.js
    # Date: 03/14/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 */
 
@@ -52,7 +52,7 @@ addSaleForm.addEventListener("submit", function (e) {
             inputEmployeeID.value = '';
             inputCustomerID.value = '';
             inputSaleRevenue.value = '';
-            inputSoldDate.value = '';
+            inputSolddate.value = '';
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
@@ -66,7 +66,7 @@ addSaleForm.addEventListener("submit", function (e) {
 
 
 // Creates a single row from an Object representing a single record from 
-// bsg_people
+// Sales
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
@@ -94,11 +94,11 @@ addRowToTable = (data) => {
     employee_idCell.innerText = newRow.employee_id;
     customer_idCell.innerText = newRow.customer_id;
     sale_revenueCell.innerText = newRow.sale_revenue;
-    sold_dateCell.innerText = newRow.sold_date;
+    let formattedDate = moment(newRow.sold_date).format('MMM DD, YYYY');
+    sold_dateCell.innerText = formattedDate;
 
 
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteSale(newRow.sale_id);
     };

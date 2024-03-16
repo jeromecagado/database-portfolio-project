@@ -1,6 +1,6 @@
 /* # Citation for the following function: add_employer.js
    # Date: 03/14/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 */
 
@@ -66,7 +66,7 @@ addEmployeeForm.addEventListener("submit", function (e) {
 
 
 // Creates a single row from an Object representing a single record from 
-// bsg_people
+// Employees
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
@@ -94,11 +94,11 @@ addRowToTable = (data) => {
     employee_fnameCell.innerText = newRow.employee_fname;
     employee_lnameCell.innerText = newRow.employee_lname;
     employee_phoneCell.innerText = newRow.employee_phone;
-    employee_hiredateCell.innerText = newRow.hire_date;
+    let formattedDate = moment(newRow.hire_date).format('MMM DD, YYYY');
+    employee_hiredateCell.innerText = formattedDate;
 
 
-    deleteCell = document.createElement("TD");
-    deleteCell.innerHTML = "Delete";
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteEmployee(newRow.employee_id);
     };

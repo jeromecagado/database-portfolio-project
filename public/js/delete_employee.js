@@ -1,6 +1,6 @@
 /* # Citation for the following function: delete_employer.js
    # Date: 03/14/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 */
 
@@ -52,7 +52,7 @@ function deleteRow(employee_id){
 
 
 // Creates a single row from an Object representing a single record from
-// bsg_people
+// Employees
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
@@ -82,7 +82,6 @@ addRowToTable = (data) => {
     employee_phoneCell.innerText = newRow.employee_phone;
     hire_dateCell.innerText = newRow.hire_date;
 
-    deleteCell = document.createElement("TD");
     deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteEmployee(newRow.employee_id);

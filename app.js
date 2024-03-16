@@ -1,6 +1,6 @@
 /* # Citation for the following function: app.js
    # Date: 02/29/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 
 
@@ -26,8 +26,11 @@ app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the han
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
 // Momment setup with formatting date. 
+// Using the Moment.js library. 
 const moment = require('moment');
 const Handlebars = require('handlebars');
+
+const formattedDate = moment().format('MM-DD-YYYY');
 
 Handlebars.registerHelper('formatDate', function(dateString, format = 'MMM DD, YYYY') {
   return moment(dateString).format(format);
@@ -40,10 +43,6 @@ var db = require('./database/db-connector')
 /*
     ROUTES
 */
-
-
-// app.js
-
 app.get('/', function(req, res)
     {
         res.render('index');                    // Note the call to render() and not send(). Using render() ensures the templating engine
@@ -59,8 +58,6 @@ app.get('/developers', function(req, res)
         res.render('developers', {data: rows});
     })
 });
-
-
 
 app.get('/customers', function(req, res)
 {
@@ -120,7 +117,6 @@ app.get('/employees', function(req, res)
 
 });
 
-// app.js - ROUTES section
 // Developer Routes
 app.post('/add-developer-ajax', function(req, res) 
 {
@@ -273,8 +269,10 @@ app.post('/add-employee-ajax', function(req, res) {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
 
+    let formattedDate = moment(data.employee_hiredate).format('MM-DD-YYYY');
+
     // Create the query and run it on the database
-    query1 = `INSERT INTO Employees (employee_fname, employee_lname, employee_phone, hire_date) VALUES ('${data.employee_fname}', '${data.employee_lname}', '${data.employee_phone}', '${data.employee_hiredate}')`;
+    query1 = `INSERT INTO Employees (employee_fname, employee_lname, employee_phone, hire_date) VALUES ('${data.employee_fname}', '${data.employee_lname}', '${data.employee_phone}', '${formattedDate}')`;
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
@@ -333,10 +331,11 @@ app.post('/add-sale-ajax', function(req, res)
 {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
-        
+    
+    let formattedDate = moment(data.sold_date).format('MM-DD-YYYY');
         
     // Create the query and run it on the database
-    query1 = `INSERT INTO Sales (employee_id, customer_id, sale_revenue, sold_date) VALUES ('${data.employee_id}', '${data.customer_id}', '${data.sale_revenue}', '${data.sold_date}')`;
+    query1 = `INSERT INTO Sales (employee_id, customer_id, sale_revenue, sold_date) VALUES ('${data.employee_id}', '${data.customer_id}', '${data.sale_revenue}', '${formattedDate}')`;
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error

@@ -1,6 +1,6 @@
 /* # Citation for the following function: delete_developer.js
    # Date: 02/29/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 */
 
@@ -80,7 +80,6 @@ addRowToTable = (data) => {
     sale_revenueCell.innerText = newRow.sale_revenue;
     sold_dateCell.innerText = newRow.sold_date;
 
-    deleteCell = document.createElement("TD");
     deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteSale(newRow.sale_id);

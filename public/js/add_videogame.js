@@ -1,6 +1,6 @@
 /* # Citation for the following function: add_videogame.js
    # Date: 02/29/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 */
 
@@ -64,7 +64,7 @@ addVideogameForm.addEventListener("submit", function (e) {
 
 
 // Creates a single row from an Object representing a single record from 
-// bsg_people
+// VideoGames
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
@@ -96,8 +96,7 @@ addRowToTable = (data) => {
 
     
     // Create the delete button
-    deleteCell = document.createElement("button");
-    deleteCell.innerHTML = "Delete";
+    deleteCell.innerHTML = "<button>Delete</button>";
     deleteCell.onclick = function(){
         deleteVideogame(newRow.video_game_id);
     };

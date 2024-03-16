@@ -1,6 +1,6 @@
 {{! -- # Citation for the following function: sales.hbs
    # Date: 03/14/2024
-   # Copied from /OR/ Adapted from /OR/ Based on: CS340 starter code.
+   # Adapted from CS340 starter code.
    # Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main
 }}
 
@@ -60,7 +60,8 @@
             <td>{{this.customer_id}}</td>
             <td>{{this.sale_revenue}}</td>
         
-         {{!-- The following formatDate was used because of Cuong Duong's suggestion to use moment with handlebars in the ed discussion reflected in the readme.--}}
+         {{!-- The following formatDate was used because of Cuong Duong's suggestion to use moment with handlebars in the ed discussion reflected in the readme.
+         Source URL: https://edstem.org/us/courses/49750/discussion/4477591--}}
             <td>{{formatDate this.sold_date 'MMM DD, YYYY'}}</td>
             
             <td><button onclick="deleteSale({{this.sale_id}})">Delete</button></td>
@@ -95,4 +96,8 @@
 
     <input type="submit">
 </form>
+
+{{!-- The following script, was needed to ensure dynamic adding with the correct formatted date. This was copied from source. 
+Source URL: https://cdnjs.com/libraries/moment.js--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="./js/add_sale.js"></script>
