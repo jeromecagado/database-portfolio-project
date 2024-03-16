@@ -5,7 +5,11 @@ const Handlebars = require('handlebars');
 
 Handlebars.registerHelper('formatDate', function(dateString, format = 'MMM DD, YYYY') {
   return moment(dateString).format(format);
-});.
+});
+
+In addition: {{!-- The following script, was needed to ensure dynamic adding with the correct formatted date. This was copied from source.  
+Source URL: https://cdnjs.com/libraries/moment.js--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
 The Retro Games database is crucial to the growth of the store. The databases focuses on the efficient management of sales, inventory, and customer relations within Retro Games store. In response to the shifting landscape of the gaming industry towards digital distribution and the growing scarcity of retro and physical video games, Retro Games has witnessed a surge in new customers seeking their products. However, without a robust system in place to track customer data, monitor inventory levels, and maintain operational efficiency while delivering exceptional customer service, Retro Games faced challenges in meeting the demands of its expanding clientele. To address these challenges, the Retro Games database was designed and implemented. This database serves as a centralized repository for storing and managing critical information pertaining to Retro Games employees, customers, developers, sales transactions, and the extensive catalog of video games offered by the store.
