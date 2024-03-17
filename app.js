@@ -207,6 +207,7 @@ app.post('/add-customer-ajax', function(req, res)
 {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
+    console.log(data)
   
     // Create the query and run it on the database
     query1 = `INSERT INTO Customers (customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone) VALUES ('${data.customer_fname}', '${data.customer_lname}', '${data.customer_address}', '${data.customer_city}', '${data.customer_state}', '${data.customer_zipcode}', '${data.customer_email}', '${data.customer_phone}')`;
@@ -269,10 +270,10 @@ app.post('/add-employee-ajax', function(req, res) {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
 
-    let formattedDate = moment(data.employee_hiredate).format('MM-DD-YYYY');
+    
 
     // Create the query and run it on the database
-    query1 = `INSERT INTO Employees (employee_fname, employee_lname, employee_phone, hire_date) VALUES ('${data.employee_fname}', '${data.employee_lname}', '${data.employee_phone}', '${formattedDate}')`;
+    query1 = `INSERT INTO Employees (employee_fname, employee_lname, employee_phone, hire_date) VALUES ('${data.employee_fname}', '${data.employee_lname}', '${data.employee_phone}', '${data.employee_hiredate}')`;
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
@@ -332,10 +333,10 @@ app.post('/add-sale-ajax', function(req, res)
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
     
-    let formattedDate = moment(data.sold_date).format('MM-DD-YYYY');
+    
         
     // Create the query and run it on the database
-    query1 = `INSERT INTO Sales (employee_id, customer_id, sale_revenue, sold_date) VALUES ('${data.employee_id}', '${data.customer_id}', '${data.sale_revenue}', '${formattedDate}')`;
+    query1 = `INSERT INTO Sales (employee_id, customer_id, sale_revenue, sold_date) VALUES ('${data.employee_id}', '${data.customer_id}', '${data.sale_revenue}', '${data.sold_date}')`;
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
@@ -456,10 +457,10 @@ M:M Intersection table, videogamesales.
 app.get('/videogamesales', function(req, res)
 {
 
-    let query1 = "SELECT * FROM VideoGameSales"
+    let query1 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id"
     db.pool.query(query1, function(error,rows,fields){
 
-        let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname AS customer_fname, sold_date FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
+        let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname AS customer_fname,Customers.customer_lname as customer_lname, sold_date FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
 
         db.pool.query(query2,function(error,salesData,fields){
 
@@ -492,7 +493,7 @@ app.post('/add-videogamesale-ajax', function(req, res)
         else
         {
             // If there was no error, perform a SELECT * on Developers.
-            query2 = `SELECT * FROM VideoGameSales;`;
+            query2 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id";
             db.pool.query(query2, function(error, rows, fields){
 
                 // If there was an error on the second query, send a 400

@@ -42,7 +42,7 @@ addCustomerForm.addEventListener("submit", function (e) {
         customer_state: customerStateValue,
         customer_zipcode: customerZipcodeValue,
         customer_email: customerEmailValue,
-        customer_phone: customerPhoneValue,
+        customer_phone: parseInt(customerPhoneValue),
     }
     console.log(data);
     
@@ -111,11 +111,11 @@ addRowToTable = (data) => {
     customer_idCell.innerText = newRow.customer_id;
     customer_fnameCell.innerText = newRow.customer_fname;
     customer_lnameCell.innerText = newRow.customer_lname;
-    customer_addressCell.innerText = newRow.customer_address;
-    customer_cityCell.innerText = newRow.customer_city;
-    customer_stateCell.innerText = newRow.customer_state;
-    customer_zipcodeCell.innerText = newRow.customer_zipcode;
-    customer_emailCell.innerText = newRow.customer_email;
+    customer_addressCell.innerText = newRow.address;
+    customer_cityCell.innerText = newRow.city;
+    customer_stateCell.innerText = newRow.state;
+    customer_zipcodeCell.innerText = newRow.zipcode;
+    customer_emailCell.innerText = newRow.email;
     customer_phoneCell.innerText = newRow.customer_phone;
     
 

@@ -35,15 +35,21 @@
             }
         </style>
     {{!-- Header section --}}
+
+    <h2>Video Game Sales</h2>
+
     <thead>
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
+            
+            <th>ID</th>
+            <th>Sale ID</th>
+            <th>Customer Name</th>
+            <th>Date of Sale</th>
+            <th>Video Game ID</th>
+            <th>Video Game Name</th>
+            
             <th>Delete</th>
         </tr>
     </thead>
@@ -55,7 +61,10 @@
         <tr data-value={{this.video_games_sales_id}}>
             <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
+            <td>{{this.customer_fname}} {{this.customer_lname}}</td>
+            <td>{{formatDate this.sold_date 'MMM DD, YYYY'}}</td>
             <td>{{this.video_game_id}}</td>
+            <td>{{this.video_game_name}}</td>
             <td><button onclick="deleteVideoGameSale({{this.video_games_sales_id}})">Delete</button></td>
         </tr>
         {{/each}}
@@ -70,7 +79,7 @@
     <label for="input-sale_id">Customer and Date: </label>
     <select name="input-sale_id" id="input-sale_id">
                 {{#each sales}}
-                <option value="{{this.sale_id}}">{{this.sale_id}} {{this.customer_fname}} </option>
+                <option value="{{this.sale_id}}">Sale ID: {{this.sale_id}} <strong> - Customer: {{this.customer_fname}} {{this.customer_lname}} - Date of Sale: {{formatDate this.sold_date 'MMM DD, YYYY'}} </option>
                 {{/each}}
             </select>
     <label for="input-videogame_id">Video Game: </label>
@@ -81,4 +90,5 @@
             </select>
     <input type="submit">
 </form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="./js/add_videogamesale.js"></script>

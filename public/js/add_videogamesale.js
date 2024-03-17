@@ -77,7 +77,10 @@ addRowToTable = (data) => {
     let row = document.createElement("TR");
     let video_game_sale_idCell = document.createElement("TD");
     let sale_idCell = document.createElement("TD");
+    let customer_nameCell = document.createElement("TD");
+    let soldDateCell = document.createElement("TD");
     let video_game_idCell = document.createElement("TD");
+    let video_game_nameCell = document.createElement("TD")
     
 
     let deleteCell = document.createElement("TD");
@@ -86,7 +89,11 @@ addRowToTable = (data) => {
     // Fill the cells with correct data
     video_game_sale_idCell.innerText = newRow.video_games_sales_id;
     sale_idCell.innerText = newRow.sale_id;
+    customer_nameCell.innerText = newRow.customer_fname + " " + newRow.customer_lname;
+    let formattedDate = moment(newRow.sold_date).format('MMM DD, YYYY');
+    soldDateCell.innerText = formattedDate
     video_game_idCell.innerText = newRow.video_game_id;
+    video_game_nameCell.innerText = newRow.video_game_name
     
 
     
@@ -100,7 +107,11 @@ addRowToTable = (data) => {
     // Add the cells to the row 
     row.appendChild(video_game_sale_idCell);
     row.appendChild(sale_idCell);
+    row.appendChild(customer_nameCell);
+    row.appendChild(soldDateCell);
     row.appendChild(video_game_idCell);
+    row.appendChild(video_game_nameCell)
+    
     row.appendChild(deleteCell);
 
     row.setAttribute('data-value', newRow.video_games_sales_id);
