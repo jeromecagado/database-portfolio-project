@@ -379,6 +379,7 @@ app.post('/add-sale-ajax', function(req, res)
                     // If all went well, send the results of the query back.
                 else
                 {
+                    
                     res.send(rows);
                         
                 }

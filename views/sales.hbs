@@ -79,8 +79,18 @@
     <label for="input-sale_revenue">sale_revenue </label>
     <input type="number" name="input-sale_revenue" id="input-sale_revenue">
     
+    
+
     <label for="input-sold_date">Sold Date </label>
     <input type="date" name="input-sold_date" id="input-sold_date">
+
+    <p>
+    <label for="input-video_game_id">Video Game: </label>
+    {{#each videogame}}
+        <input type="checkbox" id="input-video_game_id" name="input-video_game_id" value={{this.video_game_id}}>
+        <label for={{this.video_game_id}}> {{this.video_game_name}}</label>
+    {{/each}}
+    </p>
 
     <input type="submit">
 </form>
