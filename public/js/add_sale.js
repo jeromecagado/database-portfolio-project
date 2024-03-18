@@ -91,9 +91,9 @@ addRowToTable = (data) => {
 
     // Fill the cells with correct data
     sale_idCell.innerText = newRow.sale_id;
-    employee_idCell.innerText = newRow.employee_id;
-    customer_idCell.innerText = newRow.customer_id;
-    sale_revenueCell.innerText = newRow.sale_revenue;
+    employee_idCell.innerText = "ID: "+newRow.employee_id +" - Name: " +newRow.employee_fname + " " + newRow.employee_lname;
+    customer_idCell.innerText = "ID: "+newRow.customer_id +" - Name: " +newRow.customer_fname + " " + newRow.customer_lname ;
+    sale_revenueCell.innerText = "$ " +  newRow.sale_revenue;
     let formattedDate = moment(newRow.sold_date).format('MMM DD, YYYY');
     sold_dateCell.innerText = formattedDate;
 

@@ -89,7 +89,7 @@ app.get('/videogames', function(req, res)
 app.get('/sales', function(req, res)
 {
 
-    let query1 = "SELECT * FROM Sales;";
+    let query1 = "SELECT Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_id AS sale_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN Employees ON Employees.employee_id = Sales.employee_id";
     db.pool.query(query1, function(error,rows,fields){
 
         let query2 = "SELECT employee_id, employee_fname, employee_lname FROM Employees";
@@ -347,7 +347,7 @@ app.post('/add-sale-ajax', function(req, res)
             res.sendStatus(400);
             } else {
                 // If there was no error, perform a SELECT *
-                query2 = `SELECT * FROM Sales;`;
+                query2 = "SELECT Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_id AS sale_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN Employees ON Employees.employee_id = Sales.employee_id";
                 db.pool.query(query2, function(error, rows, fields){
 
                 // If there was an error on the second query, send a 400
