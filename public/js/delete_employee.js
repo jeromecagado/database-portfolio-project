@@ -65,7 +65,7 @@ addRowToTable = (data) => {
     let parsedData = JSON.parse(data);
     let newRow = parsedData[parsedData.length - 1]
 
-    // Create a row and 4 cells
+    // Create a row and 5 cells
     let row = document.createElement("TR");
     let employee_idCell = document.createElement("TD");
     let employee_fnameCell = document.createElement("TD");

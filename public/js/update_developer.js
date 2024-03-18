@@ -83,8 +83,8 @@ function updateRow(data, developer_id){
             let tdEmail = updateRowIndex.getElementsByTagName("td")[3];
            
 
-            // Reassing id, country and email values.
-           // tdId.innerHTML = parsedData[0].developer_id;
+            // Reassing country and email values.
+           
             tdCountry.innerHTML = parsedData[0].developer_country;
             tdEmail.innerHTML = parsedData[0].developer_email;
 
