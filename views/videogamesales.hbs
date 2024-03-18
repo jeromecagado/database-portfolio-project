@@ -59,6 +59,8 @@
             <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
             <td>{{this.customer_fname}} {{this.customer_lname}}</td>
+         {{!-- The following formatDate was used because of Cuong Duong's suggestion to use moment with handlebars in the ed discussion reflected in the readme.
+         Source URL: https://edstem.org/us/courses/49750/discussion/4477591--}}
             <td>{{formatDate this.sold_date 'MMM DD, YYYY'}}</td>
             <td>{{this.video_game_id}}</td>
             <td>{{this.video_game_name}}</td>
