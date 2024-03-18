@@ -85,13 +85,13 @@
             </select>
     
     <label for="input-customer_id">Customer: </label>
-    <select name="input-customer_id" id="input-customer_id">
+    <select name="input-customer_id" required id="input-customer_id">
                 {{#each customers}}
                 <option value="{{this.customer_id}}">{{this.customer_fname}} {{this.customer_lname}}</option>
                 {{/each}}
             </select>
     <label for="input-sale_revenue">sale_revenue </label>
-    <input type="number" name="input-sale_revenue" id="input-sale_revenue">
+    <input type="number" name="input-sale_revenue" required id="input-sale_revenue">
     
     <label for="input-sold_date">Sold Date </label>
     <input type="date" name="input-sold_date" id="input-sold_date">

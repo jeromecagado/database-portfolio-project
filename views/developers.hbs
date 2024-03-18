@@ -72,13 +72,13 @@
 <p>To add a new developer, please enter their information below and click 'Submit'!</p>
 <form id="add-developer-form-ajax">
     <label for="input-developer_name">Developer Name: </label>
-    <input type="text" name="input-developer_name" id="input-developer_name">
+    <input type="text" name="input-developer_name" required id="input-developer_name">
     
     <label for="input-developer_country">Country: </label>
-    <input type="text" name="input-developer_country" id="input-developer_country">
+    <input type="text" name="input-developer_country" required id="input-developer_country">
 
     <label for="input-developer_email">Email: </label>
-    <input type="text" name="input-developer_email" id="input-developer_email">
+    <input type="text" name="input-developer_email" required id="input-developer_email">
 
     <input type="submit">
 </form>
@@ -95,10 +95,10 @@
         {{/each}}
     </select>
     <label for="input-developer_country">Country: </label>
-    <input type="text" name="input-developer_country-update" id="input-developer_country-update">
+    <input type="text" name="input-developer_country-update" required id="input-developer_country-update">
 
     <label for="input-developer_email">Email: </label>
-    <input type="text" name="input-developer_email-update" id="input-developer_email-update">
+    <input type="text" name="input-developer_email-update"required id="input-developer_email-update">
     <input type="submit">
 </form>
 
