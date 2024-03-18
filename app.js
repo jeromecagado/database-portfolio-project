@@ -136,20 +136,21 @@ app.post('/add-developer-ajax', function(req, res)
         }
         else
         {
-            // If there was no error, perform a SELECT * on Developers.
+            // Show everything from developers
             query2 = `SELECT * FROM Developers;`;
             db.pool.query(query2, function(error, rows, fields){
 
-                // If there was an error on the second query, send a 400
+                // Check for error
                 if (error) {
                     
-                    // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                    // Show the error
                     console.log(error);
                     res.sendStatus(400);
                 }
-                // If all went well, send the results of the query back.
+                // Send results
                 else
                 {
+
                     res.send(rows);
                 }
             })
@@ -159,7 +160,7 @@ app.post('/add-developer-ajax', function(req, res)
 
 // Delete developer from table by deleting developer_id. 
 app.delete('/delete-developer-ajax', function(req,res,next){
-    let data = req.body;
+    let data = req.body
     let developer_id = parseInt(data.developer_id);
     let deleteDeveloper= `DELETE FROM Developers WHERE developer_id = ?`;
   
@@ -181,7 +182,7 @@ app.delete('/delete-developer-ajax', function(req,res,next){
 // Update developer.
 app.put('/put-developer-ajax', function(req,res,next){
     let data = req.body;
-    let developer_id = parseInt(data.developer_name);
+    let developer_id = parseInt(data.developer_id);
     let developer_country = data.developer_country;
     let developer_email = data.developer_email;
   
@@ -195,9 +196,17 @@ app.put('/put-developer-ajax', function(req,res,next){
               console.log(error);
               res.sendStatus(400);
               } else {
-                console.log("Developer udpated successfully");
-               // res.sendStatus(200);
-                res.send(rows);
+                query2 = "SELECT * FROM Developers WHERE developer_id = ?"
+                db.pool.query(query2,[developer_id],function(error,rows,fields){
+
+                    if (error){
+                        console.log(error);
+                        res.sendStatus(400); 
+                    }
+                    else{
+                        res.send(rows);
+                    }
+                })
               }
   })});
 
