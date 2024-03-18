@@ -11,7 +11,7 @@ CREATE TABLE Employees(
 employee_id INT auto_increment NOT NULL UNIQUE,
 employee_fname VARCHAR(45) NOT NULL,
 employee_lname VARCHAR(45) NOT NULL,
-employee_phone INT(10) NOT NULL,
+employee_phone VARCHAR(21) NOT NULL,
 hire_date DATE,
 PRIMARY KEY(employee_id)
 );
@@ -28,7 +28,7 @@ city VARCHAR(45) NOT NULL,
 state VARCHAR(45) NOT NULL,
 zipcode VARCHAR(45) NOT NULL,
 email VARCHAR (45) NOT NULL,
-customer_phone INT NOT NULL,
+customer_phone VARCHAR(21) NOT NULL,
 PRIMARY KEY(customer_id)
 );
 
@@ -89,16 +89,16 @@ FOREIGN KEY (video_game_id) REFERENCES VideoGames(video_game_id) ON DELETE CASCA
 
 -- Adds in some employees
 INSERT INTO Employees(employee_fname, employee_lname,employee_phone,hire_date)
-VALUES ("John", "Smith", 14321683, "2021-04-25"),
-("Terry", "Clinton", 16548327, "2023-05-16"),
-("Jill", "Cool", 15928383, "2019-05-03"),
-("Gabriel", "Chang",13245634, '2017-05-23');
+VALUES ("John", "Smith", "14321683", "2021-04-25"),
+("Terry", "Clinton", "16548327", "2023-05-16"),
+("Jill", "Cool", "15928383", "2019-05-03"),
+("Gabriel", "Chang","13245634", '2017-05-23');
 
 -- Adds in some customers
 INSERT INTO Customers( customer_fname, customer_lname, address, city, state, zipcode, email, customer_phone)
-VALUES ("Sam", "Romanano", "123 Cool Street", "Los Angeles" ,"California", "72839", "SR@yahoo.com", 18727826),
-("Sophia", "Rodriguez", "321 Nice Avenue", "Seattle", "Washington", "98101", "sophia.rodri@gmail.com", 14598547),
-("Jonathan", "Thompson", "432 73rd Street", "Minneapolis", "Minnesota", "55633", "J.Teach@gmail.com", 18209483);
+VALUES ("Sam", "Romanano", "123 Cool Street", "Los Angeles" ,"California", "72839", "SR@yahoo.com", "18727826"),
+("Sophia", "Rodriguez", "321 Nice Avenue", "Seattle", "Washington", "98101", "sophia.rodri@gmail.com", "14598547"),
+("Jonathan", "Thompson", "432 73rd Street", "Minneapolis", "Minnesota", "55633", "J.Teach@gmail.com", "18209483");
 
 
 -- Adds in some developers

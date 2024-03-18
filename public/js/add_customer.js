@@ -42,7 +42,7 @@ addCustomerForm.addEventListener("submit", function (e) {
         customer_state: customerStateValue,
         customer_zipcode: customerZipcodeValue,
         customer_email: customerEmailValue,
-        customer_phone: parseInt(customerPhoneValue),
+        customer_phone: customerPhoneValue,
     }
     console.log(data);
     
