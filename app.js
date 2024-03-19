@@ -89,7 +89,7 @@ app.get('/videogames', function(req, res)
 app.get('/sales', function(req, res)
 {
 
-    let query1 = "SELECT Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_id AS sale_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id LEFT JOIN Employees ON Employees.employee_id = Sales.employee_id";
+    let query1 = "SELECT Sales.sale_id AS sale_id, Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id LEFT JOIN Employees ON Employees.employee_id = Sales.employee_id ORDER BY sale_id";
     db.pool.query(query1, function(error,rows,fields){
 
         let query2 = "SELECT employee_id, employee_fname, employee_lname FROM Employees";
@@ -356,7 +356,7 @@ app.post('/add-sale-ajax', function(req, res)
             res.sendStatus(400);
             } else {
                 // If there was no error, perform a SELECT *
-                query2 = "SELECT Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_id AS sale_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id LEFT JOIN Employees ON Employees.employee_id = Sales.employee_id";
+                query2 = "SELECT Sales.sale_id AS sale_id, Sales.customer_id AS customer_id, Sales.employee_id AS employee_id, Sales.sale_revenue AS sale_revenue,  Sales.sold_date AS sold_date, Customers.customer_fname AS customer_fname,   Customers.customer_lname AS customer_lname,   Employees.employee_fname AS employee_fname,Employees.employee_lname AS employee_lname FROM Sales INNER JOIN Customers ON Customers.customer_id = Sales.customer_id LEFT JOIN Employees ON Employees.employee_id = Sales.employee_id ORDER BY sale_id";
                 db.pool.query(query2, function(error, rows, fields){
 
                 // If there was an error on the second query, send a 400
@@ -466,7 +466,7 @@ M:M Intersection table, videogamesales.
 app.get('/videogamesales', function(req, res)
 {
 
-    let query1 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id"
+    let query1 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id ORDER BY video_games_sales_id"
     db.pool.query(query1, function(error,rows,fields){
 
         let query2 = "SELECT Sales.sale_id, Sales.customer_id, Customers.customer_fname AS customer_fname,Customers.customer_lname as customer_lname, sold_date FROM Sales Join Customers On Customers.customer_id = Sales.customer_id";
@@ -502,7 +502,7 @@ app.post('/add-videogamesale-ajax', function(req, res)
         else
         {
             // If there was no error, perform a SELECT * on Developers.
-            query2 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id";
+            query2 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id ORDER BY video_games_sales_id";
             db.pool.query(query2, function(error, rows, fields){
 
                 // If there was an error on the second query, send a 400
