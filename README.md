@@ -1,4 +1,4 @@
-All codes is based on the CS 340 starter code, with the exception of formatting dates in employee.hbs, sales.hbs and the get functions for both employee and sales in app.js. That code is based on this ed dicussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, is the one who suggested using the following:
+All codes is based on the CS 340 starter code, with the exception of formatting dates in employee.hbs, sales.hbs and the get functions for both sales in app.js. The get sales code is from our code that was adatped from CS340 starter code. We added extra queries to handle foreign keys from employee and customers in the sales get function. The formatting dats code is based on this ed dicussion: https://edstem.org/us/courses/49750/discussion/4477591. Cuong Duong, is the one who suggested using the following:
 
 const moment = require('moment');
 const Handlebars = require('handlebars');
@@ -10,6 +10,7 @@ Handlebars.registerHelper('formatDate', function(dateString, format = 'MMM DD, Y
 In addition: {{!-- The following script, was needed to ensure dynamic adding with the correct formatted date. This was copied from source.  
 Source URL: https://cdnjs.com/libraries/moment.js--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 
 
 The Retro Games database is crucial to the growth of the store. The databases focuses on the efficient management of sales, inventory, and customer relations within Retro Games store. In response to the shifting landscape of the gaming industry towards digital distribution and the growing scarcity of retro and physical video games, Retro Games has witnessed a surge in new customers seeking their products. However, without a robust system in place to track customer data, monitor inventory levels, and maintain operational efficiency while delivering exceptional customer service, Retro Games faced challenges in meeting the demands of its expanding clientele. To address these challenges, the Retro Games database was designed and implemented. This database serves as a centralized repository for storing and managing critical information pertaining to Retro Games employees, customers, developers, sales transactions, and the extensive catalog of video games offered by the store.

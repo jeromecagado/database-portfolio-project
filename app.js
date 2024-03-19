@@ -501,7 +501,7 @@ app.post('/add-videogamesale-ajax', function(req, res)
         }
         else
         {
-            // If there was no error, perform a SELECT * on Developers.
+            // If there was no error, perform a SELECT * on VideoGameSales.
             query2 = "SELECT Sales.sale_id AS sale_id, VideoGameSales.video_game_id AS video_game_id, video_games_sales_id, Customers.customer_fname AS customer_fname, Customers.customer_lname as customer_lname, Sales.sold_date AS sold_date, VideoGames.video_game_name AS video_game_name  FROM VideoGameSales  INNER JOIN Sales  ON VideoGameSales.sale_id = Sales.sale_id INNER JOIN Customers ON Customers.customer_id = Sales.customer_id INNER JOIN VideoGames ON VideoGames.video_game_id = VideoGameSales.video_game_id ORDER BY video_games_sales_id";
             db.pool.query(query2, function(error, rows, fields){
 
