@@ -39,17 +39,14 @@
     <h2>Video Game Sales</h2>
 
     <thead>
-        {{!-- For just the first row, we print each key of the row object as a header cell so we
-        know what each column means when the page renders --}}
+      {{!-- This Section was our code, because we wanted the tables to look a certain way. --}}
         <tr>
-            
             <th>ID</th>
             <th>Sale ID</th>
             <th>Customer Name</th>
             <th>Date of Sale</th>
             <th>Video Game ID</th>
             <th>Video Game Name</th>
-            
             <th>Delete</th>
         </tr>
     </thead>
@@ -62,6 +59,8 @@
             <td>{{this.video_games_sales_id}}</td>
             <td>{{this.sale_id}}</td>
             <td>{{this.customer_fname}} {{this.customer_lname}}</td>
+         {{!-- The following formatDate was used because of Cuong Duong's suggestion to use moment with handlebars in the ed discussion reflected in the readme.
+         Source URL: https://edstem.org/us/courses/49750/discussion/4477591--}}
             <td>{{formatDate this.sold_date 'MMM DD, YYYY'}}</td>
             <td>{{this.video_game_id}}</td>
             <td>{{this.video_game_name}}</td>
@@ -90,5 +89,7 @@
             </select>
     <input type="submit">
 </form>
+{{!-- The following script, was needed to ensure dynamic adding with the correct formatted date. This was copied from source.  
+Source URL: https://cdnjs.com/libraries/moment.js--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="./js/add_videogamesale.js"></script>
